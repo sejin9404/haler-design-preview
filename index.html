@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="blocks_v2.css">
 </head><body>
 
-<nav class="hl-nav"><div class="logo">bliz<span>.</span></div><a>Product</a><a>Ritual</a><a>Science</a><a class="sp"></a><a>Log in</a><button class="gbtn gbtn--blue gbtn--sm">Start trial</button></nav>
+<nav class="hl-nav" id="nav"><a class="hl-nav__logo"><img src="logo.png" alt="haler"></a><div class="hl-nav__menu"><a>Product</a><a>Ritual</a><a>Science</a></div><div class="hl-nav__act"><a>Log in</a><button class="gbtn gbtn--blue gbtn--sm">Start trial</button></div></nav>
 
 <div class="hl-page">
 
@@ -127,6 +127,10 @@
  if(!('IntersectionObserver'in window)){els.forEach(function(e){e.classList.add('sp-in')});return;}
  var io=new IntersectionObserver(function(ents){ents.forEach(function(en){if(en.isIntersecting){en.target.classList.add('sp-in');io.unobserve(en.target)}})},{threshold:.12,rootMargin:'0px 0px -7% 0px'});
  els.forEach(function(e){io.observe(e)});
+ // nav: 히어로 위=투명/흰, 스크롤 후=밝은 글래스/다크
+ var nav=document.getElementById('nav');
+ function navState(){ if(nav) nav.classList.toggle('is-scrolled', window.scrollY > window.innerHeight*0.82); }
+ navState(); window.addEventListener('scroll',navState,{passive:true});
 })();
 </script>
 </body></html>

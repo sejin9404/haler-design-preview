@@ -68,15 +68,15 @@ img{max-width:100%}
 
 /* 1. 히어로 — 천장 부착 풀 비디오 블록 (윗면 천장, 아래만 둥글게, 글래스카드 X) */
 .hero-v{position:relative;margin:0 0 20px;border-radius:0 0 36px 36px;overflow:hidden;min-height:90vh;display:flex;align-items:flex-end}
-.hero-v__bg{position:absolute;inset:0}
-.hero-v__bg video{width:100%;height:100%;object-fit:cover;display:block}
-.hero-v::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(8,18,38,.30),transparent 24%,transparent 48%,rgba(8,18,38,.55))}
-.hero-v__in{position:relative;z-index:2;width:100%;padding:0 clamp(24px,4vw,52px) clamp(46px,7vw,80px);text-align:left}
-.hero-v__box{max-width:600px}
+.hero-v__bg{position:absolute;inset:0;border-radius:0 0 36px 36px;overflow:hidden}
+.hero-v__bg video{width:100%;height:100%;object-fit:cover;display:block;border-radius:0 0 36px 36px}
+.hero-v::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:0 0 36px 36px;background:linear-gradient(180deg,rgba(8,18,38,.30),transparent 24%,transparent 48%,rgba(8,18,38,.55))}
+.hero-v__in{position:relative;z-index:2;width:100%;padding:0 clamp(24px,4vw,52px) clamp(46px,7vw,80px);text-align:center}
+.hero-v__box{max-width:780px;margin:0 auto}
 .hero-v__box .hl-h1{color:#fff;font-size:clamp(40px,6vw,66px);margin:0 0 16px}
 .hero-v__box .hl-h1 .ac{background:none;-webkit-text-fill-color:#bfe6ff;color:#bfe6ff}
-.hero-v__sub{color:rgba(255,255,255,.92);font-size:clamp(16px,1.6vw,19px);line-height:1.55;max-width:460px;margin:0 0 26px}
-.hero-v__cta{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.hero-v__sub{color:rgba(255,255,255,.92);font-size:clamp(15px,1.5vw,18px);line-height:1.55;max-width:780px;margin:0 auto 26px}
+.hero-v__cta{display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:center}
 .gbtn--hero{padding:15px 32px;-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);color:#fff}
 .gbtn--hero:hover{background:rgba(255,255,255,.28)}
 .hero-v__link{color:#fff;font-family:var(--fd);font-weight:500;font-size:15px;text-decoration:none;opacity:.92}
@@ -173,12 +173,20 @@ img{max-width:100%}
 .hl-footer__disc{font-size:11.5px;color:var(--ink3);max-width:620px;margin:18px auto 0;line-height:1.6}
 
 /* 내비 */
-/* navbar — 블록보다 한 단계 좁게, 고정 떠 있음(블록 안에 들어온 형상) */
-.hl-nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:40;width:calc(100% - 84px);max-width:1040px;display:flex;align-items:center;gap:20px;padding:11px 16px 11px 22px;border-radius:999px;background:rgba(255,255,255,.6);-webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5)}
-.hl-nav .logo{font-family:var(--fd);font-weight:500;font-size:20px}
-.hl-nav .logo span{color:var(--blue)}
-.hl-nav a{font-family:var(--fd);font-weight:500;font-size:14px;color:var(--ink2);text-decoration:none}
-.hl-nav .sp{margin-left:auto}
+/* navbar — 블록보다 좁게 떠 있음. 스크롤 인식(히어로 위=투명·흰 / 스크롤 후=밝은 글래스·다크) */
+.hl-nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:40;width:calc(100% - 84px);max-width:1040px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 14px 10px 20px;border-radius:999px;background:transparent;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .3s ease,backdrop-filter .3s ease}
+.hl-nav__logo{display:flex;align-items:center}
+.hl-nav__logo img{height:26px;display:block;transition:filter .3s ease}
+.hl-nav__menu{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:26px}
+.hl-nav__menu a,.hl-nav__act a{font-family:var(--fd);font-weight:500;font-size:14px;text-decoration:none}
+.hl-nav__act{display:flex;align-items:center;gap:14px}
+/* 기본(히어로 위): 흰색 */
+.hl-nav__menu a,.hl-nav__act a{color:#fff}
+.hl-nav__logo img{filter:brightness(0) invert(1)}
+/* 스크롤 후: 밝은 글래스 + 다크 + 원색 로고 */
+.hl-nav.is-scrolled{background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5)}
+.hl-nav.is-scrolled .hl-nav__menu a,.hl-nav.is-scrolled .hl-nav__act a{color:var(--ink2)}
+.hl-nav.is-scrolled .hl-nav__logo img{filter:none}
 
 /* ============================================================
    ★ SPATIAL 깊이 레이어 (기존 구조 위에 마감만 얹음)
