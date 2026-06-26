@@ -12,7 +12,7 @@
   --fd:'Poppins',-apple-system,system-ui,sans-serif;
   --fb:'DM Sans',-apple-system,system-ui,sans-serif;
   --page:#FAFDFF;
-  --card:#F1F7FE;          /* 카드 옅은 채움(테두리 대신) */
+  --card:#E9F1FC;          /* 카드 톤(그림자 없이 톤 대비로 구분) */
   --card2:#FFFFFF;
   --blk-hero:radial-gradient(1000px 720px at 8% -10%,rgba(0,140,255,.18),transparent 60%),radial-gradient(820px 620px at 100% 108%,rgba(0,183,255,.14),transparent 60%),#F2F8FF;
   --blk-point:linear-gradient(150deg,#1E97FF,#0A5FE0);
@@ -82,7 +82,7 @@ img{max-width:100%}
 /* 3. 가치3 (카드만, 테두리0 옅은 채움) */
 .hl-value3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
 .hl-vcard{background:var(--card);border-radius:24px;padding:34px 26px;transition:all .25s ease}
-.hl-vcard:hover{background:#fff;transform:translateY(-3px);box-shadow:0 18px 44px rgba(0,110,230,.13)}
+.hl-vcard:hover{background:#fff;transform:translateY(-3px)}
 .hl-vcard__ic{width:48px;height:48px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
 .hl-vcard__ic svg{width:22px;height:22px;stroke:var(--blue);fill:none;stroke-width:1.6}
 .hl-vcard h4{font-family:var(--fd);font-weight:500;font-size:18px;margin:0 0 6px}
@@ -176,21 +176,21 @@ img{max-width:100%}
   --sh-soft:0 2px 8px rgba(10,60,140,.04),0 14px 34px rgba(10,60,140,.07);
   --sh-lift:0 10px 24px rgba(10,60,140,.09),0 34px 66px rgba(10,70,160,.15);
 }
-/* 카드: 다층 소프트 섀도 + 호버 시 앞으로 떠오름 */
-.hl-vcard,.hl-mb,.hl-bigcard,.hl-tcard,.hl-pcard,.hl-step{box-shadow:var(--sh-soft);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s cubic-bezier(.22,1,.36,1),background .25s}
-.hl-vcard:hover,.hl-mb:hover,.hl-bigcard:hover,.hl-tcard:hover{transform:translateY(-5px);box-shadow:var(--sh-lift)}
-.hl-pcard--reco{box-shadow:inset 0 0 0 1.5px rgba(0,132,255,.55),var(--sh-lift)}
+/* 깊이는 톤·레이어·블러로만 (그림자 사용 안 함 — spatial 원칙) */
+.hl-vcard,.hl-mb,.hl-bigcard,.hl-tcard,.hl-pcard,.hl-step{transition:transform .3s cubic-bezier(.22,1,.36,1),background .25s,-webkit-backdrop-filter .25s,backdrop-filter .25s}
+.hl-vcard:hover,.hl-mb:hover,.hl-bigcard:hover,.hl-tcard:hover{transform:translateY(-4px);background:#fff}
+.hl-pcard--reco{box-shadow:inset 0 0 0 1.5px rgba(0,132,255,.5)}  /* 링(아웃라인)만, drop shadow 아님 */
 
 /* 히어로: 글래스 카드 깊이 + 떠 있는 오브제(패럴랙스 느낌) */
 .hl-hero{perspective:1200px}
-.hl-hero__card{box-shadow:0 10px 30px rgba(10,60,140,.10),0 44px 84px rgba(10,70,160,.16)}
+.hl-hero__card{box-shadow:none}
 .hero-deco{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
 .hero-orb{position:absolute;border-radius:50%;-webkit-backdrop-filter:blur(6px) saturate(1.2);backdrop-filter:blur(6px) saturate(1.2);background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4)}
 .hero-orb.o1{width:120px;height:120px;left:7%;top:24%;animation:floatA 9s ease-in-out infinite}
 .hero-orb.o2{width:72px;height:72px;right:14%;bottom:20%;animation:floatB 11s ease-in-out infinite}
 .hero-pearl{position:absolute;width:150px;height:150px;right:8%;top:14%;border-radius:50%;
   background:radial-gradient(60% 48% at 42% 30%,rgba(255,255,255,.92),transparent 60%),radial-gradient(50% 45% at 72% 40%,rgba(150,200,255,.6),transparent 70%),radial-gradient(55% 50% at 40% 76%,rgba(255,190,212,.5),transparent 70%),radial-gradient(50% 45% at 80% 80%,rgba(150,235,205,.45),transparent 70%),#eef4fc;
-  box-shadow:0 28px 54px rgba(120,140,200,.25),inset 0 8px 22px rgba(255,255,255,.7);animation:floatA 8s ease-in-out infinite}
+  box-shadow:inset 0 8px 22px rgba(255,255,255,.7);animation:floatA 8s ease-in-out infinite}
 @keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
 @keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(13px)}}
 
