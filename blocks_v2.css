@@ -168,3 +168,38 @@ img{max-width:100%}
 .hl-nav .logo span{color:var(--blue)}
 .hl-nav a{font-family:var(--fd);font-weight:500;font-size:14px;color:var(--ink2);text-decoration:none}
 .hl-nav .sp{margin-left:auto}
+
+/* ============================================================
+   ★ SPATIAL 깊이 레이어 (기존 구조 위에 마감만 얹음)
+   ============================================================ */
+:root{
+  --sh-soft:0 2px 8px rgba(10,60,140,.04),0 14px 34px rgba(10,60,140,.07);
+  --sh-lift:0 10px 24px rgba(10,60,140,.09),0 34px 66px rgba(10,70,160,.15);
+}
+/* 카드: 다층 소프트 섀도 + 호버 시 앞으로 떠오름 */
+.hl-vcard,.hl-mb,.hl-bigcard,.hl-tcard,.hl-pcard,.hl-step{box-shadow:var(--sh-soft);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s cubic-bezier(.22,1,.36,1),background .25s}
+.hl-vcard:hover,.hl-mb:hover,.hl-bigcard:hover,.hl-tcard:hover{transform:translateY(-5px);box-shadow:var(--sh-lift)}
+.hl-pcard--reco{box-shadow:inset 0 0 0 1.5px rgba(0,132,255,.55),var(--sh-lift)}
+
+/* 히어로: 글래스 카드 깊이 + 떠 있는 오브제(패럴랙스 느낌) */
+.hl-hero{perspective:1200px}
+.hl-hero__card{box-shadow:0 10px 30px rgba(10,60,140,.10),0 44px 84px rgba(10,70,160,.16)}
+.hero-deco{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.hero-orb{position:absolute;border-radius:50%;-webkit-backdrop-filter:blur(6px) saturate(1.2);backdrop-filter:blur(6px) saturate(1.2);background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4)}
+.hero-orb.o1{width:120px;height:120px;left:7%;top:24%;animation:floatA 9s ease-in-out infinite}
+.hero-orb.o2{width:72px;height:72px;right:14%;bottom:20%;animation:floatB 11s ease-in-out infinite}
+.hero-pearl{position:absolute;width:150px;height:150px;right:8%;top:14%;border-radius:50%;
+  background:radial-gradient(60% 48% at 42% 30%,rgba(255,255,255,.92),transparent 60%),radial-gradient(50% 45% at 72% 40%,rgba(150,200,255,.6),transparent 70%),radial-gradient(55% 50% at 40% 76%,rgba(255,190,212,.5),transparent 70%),radial-gradient(50% 45% at 80% 80%,rgba(150,235,205,.45),transparent 70%),#eef4fc;
+  box-shadow:0 28px 54px rgba(120,140,200,.25),inset 0 8px 22px rgba(255,255,255,.7);animation:floatA 8s ease-in-out infinite}
+@keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+@keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(13px)}}
+
+/* 스크롤 진입 페이드업 (JS가 .sp-reveal 부여 → 보일 때 .sp-in) */
+.sp-reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.sp-in{opacity:1;transform:none}
+
+@media (max-width:600px){.hero-deco{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .sp-reveal{opacity:1;transform:none;transition:none}
+  .hero-orb,.hero-pearl{animation:none}
+}

@@ -11,6 +11,7 @@
   <!-- 1. HERO 블록 -->
   <section class="hl-block hl-hero">
     <div class="hl-hero__media">(영상) — 평온해진 사람 + 미스트</div>
+    <div class="hero-deco"><span class="hero-orb o1"></span><span class="hero-orb o2"></span><span class="hero-pearl"></span></div>
     <div class="hl-hero__card">
       <h1 class="hl-h1">Fresh, hydrated air.<br><span class="ac">Every day.</span></h1>
       <p class="hl-sub">bliz delivers a gentle mist of pure water to your upper airway — a calm, clean daily ritual for yourself.</p>
@@ -120,4 +121,14 @@
   </footer>
 
 </div>
+<script>
+(function(){
+ var sel='.hl-h2,.hl-sub,.hl-stake,.hl-vcard,.hl-mb,.hl-bigcard,.hl-step,.hl-tcard,.hl-pcard,.hl-explain,.hero__card,.hl-cmp,.hl-pchips,.hl-trial,.hl-lead__form';
+ var els=[].slice.call(document.querySelectorAll(sel));
+ els.forEach(function(e,i){e.classList.add('sp-reveal');e.style.transitionDelay=((i%3)*0.07)+'s'});
+ if(!('IntersectionObserver'in window)){els.forEach(function(e){e.classList.add('sp-in')});return;}
+ var io=new IntersectionObserver(function(ents){ents.forEach(function(en){if(en.isIntersecting){en.target.classList.add('sp-in');io.unobserve(en.target)}})},{threshold:.12,rootMargin:'0px 0px -7% 0px'});
+ els.forEach(function(e){io.observe(e)});
+})();
+</script>
 </body></html>
