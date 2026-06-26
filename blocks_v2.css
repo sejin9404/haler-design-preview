@@ -176,7 +176,7 @@ img{max-width:100%}
 /* navbar — 블록보다 좁게 떠 있음. 스크롤 인식(히어로 위=투명·흰 / 스크롤 후=밝은 글래스·다크) */
 .hl-nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:40;width:calc(100% - 84px);max-width:1040px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 14px 10px 20px;border-radius:999px;background:transparent;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .3s ease,backdrop-filter .3s ease}
 .hl-nav__logo{display:flex;align-items:center}
-.hl-nav__logo img{height:26px;display:block;transition:filter .3s ease}
+.hl-nav__logo img{height:26px;width:auto;max-width:140px;display:block;transition:filter .3s ease}
 .hl-nav__menu{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:26px}
 .hl-nav__menu a,.hl-nav__act a{font-family:var(--fd);font-weight:500;font-size:14px;text-decoration:none}
 .hl-nav__act{display:flex;align-items:center;gap:14px}
