@@ -187,10 +187,10 @@ img{max-width:100%}
 .hl-nav.is-scrolled{background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5)}
 .hl-nav.is-scrolled .hl-nav__menu a,.hl-nav.is-scrolled .hl-nav__act a{color:var(--ink2)}
 .hl-nav.is-scrolled .hl-nav__logo img{filter:none}
-/* nav CTA — 히어로 위: 흰 알약 + 글자 도려내 영상 비침(knockout) / 스크롤 후: 파란 버튼 */
-.gbtn--navcta{background:#fff;color:#000;mix-blend-mode:screen;border:none}
-.gbtn--navcta:hover{background:#fff}
-.hl-nav.is-scrolled .gbtn--navcta{background:var(--blue);color:#fff;mix-blend-mode:normal}
+/* nav CTA — 히어로 위: 프로스트 글래스(흰 림·흰 글씨) / 스크롤 후: 파란 버튼 */
+.gbtn--navcta{-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.55);color:#fff}
+.gbtn--navcta:hover{background:rgba(255,255,255,.28)}
+.hl-nav.is-scrolled .gbtn--navcta{background:var(--blue);border:none;color:#fff;-webkit-backdrop-filter:none;backdrop-filter:none}
 .hl-nav.is-scrolled .gbtn--navcta:hover{background:#0A6FE0}
 
 /* ============================================================
