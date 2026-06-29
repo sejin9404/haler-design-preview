@@ -228,48 +228,9 @@ img{max-width:100%}
   .hero-orb,.hero-pearl{animation:none}
 }
 
-/* ── Product Intro Section ─────────────────────────────── */
-.hl-sec--product-intro {
-  text-align: center;
-  padding: 72px 24px 64px;
-}
-.hl-product-img-wrap {
-  margin: 40px auto 32px;
-  max-width: 280px;
-}
-.hl-product-img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-.hl-product-bottom {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 14px;
-}
-.hl-bliz-logo {
-  width: 120px;
-  height: auto;
-  display: block;
-}
-.gbtn--glass {
-  background: rgba(255,255,255,0.22);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.45);
-  color: #1a1a1a;
-  border-radius: 100px;
-  padding: 11px 20px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  letter-spacing: 0.01em;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.6);
-  transition: all 0.2s ease;
-  width: 100%;
-}
-.gbtn--glass:hover {
-  background: rgba(255,255,255,0.35);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.7);
-}
+/* ── Product BG Block ─────────────────────────────── */
+.hl-sec--product-bg{background:url('bliz_product_landscape.png') center/cover no-repeat;min-height:480px;display:flex;align-items:center;justify-content:center;padding:80px 48px;position:relative}
+.hl-sec--product-bg::before{content:'';position:absolute;inset:0;background:rgba(200,225,245,.25);border-radius:inherit;pointer-events:none}
+.hl-product-bg__inner{position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
+.hl-product-cta{display:inline-flex;flex-direction:column;align-items:stretch;gap:12px;margin-top:20px}
+.hl-bliz-logo{width:110px;height:auto;display:block}
