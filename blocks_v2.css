@@ -227,10 +227,3 @@ img{max-width:100%}
   .sp-reveal{opacity:1;transform:none;transition:none}
   .hero-orb,.hero-pearl{animation:none}
 }
-
-/* ── Product BG Block ─────────────────────────────── */
-.hl-sec--product-bg{background:url('bliz_product_landscape.png') center/cover no-repeat;min-height:480px;display:flex;align-items:center;justify-content:center;padding:80px 48px;position:relative}
-.hl-sec--product-bg::before{content:'';position:absolute;inset:0;background:rgba(200,225,245,.25);border-radius:inherit;pointer-events:none}
-.hl-product-bg__inner{position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
-.hl-product-cta{display:inline-flex;flex-direction:column;align-items:stretch;gap:12px;margin-top:20px}
-.hl-bliz-logo{width:110px;height:auto;display:block}
