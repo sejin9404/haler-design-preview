@@ -2,7 +2,26 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="blocks_v2.css?v=5">
+
+<style>
+.bg-diffusion {
+  position: fixed;
+  top: -20%;
+  left: -10%;
+  width: 120%;
+  height: 140%;
+  background:
+    radial-gradient(ellipse 80% 60% at 65% 25%, rgba(0, 132, 255, 0.045) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 55% at 15% 78%, rgba(0, 180, 255, 0.028) 0%, transparent 58%),
+    radial-gradient(ellipse 40% 35% at 85% 80%, rgba(100, 210, 255, 0.022) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+}
+.hl-page { position: relative; z-index: 1; }
+</style>
 </head><body>
+<div class="bg-diffusion" id="bgDiffusion"></div>
 
 <nav class="hl-nav" id="nav"><a class="hl-nav__logo"><img src="logo.png" alt="haler"></a><div class="hl-nav__menu"><a>Product</a><a>Ritual</a><a>Science</a></div><div class="hl-nav__act"><a>Log in</a><button class="gbtn gbtn--sm gbtn--navcta">Start trial</button></div></nav>
 
@@ -131,6 +150,22 @@
  var nav=document.getElementById('nav');
  function navState(){ if(nav) nav.classList.toggle('is-scrolled', window.scrollY > window.innerHeight*0.82); }
  navState(); window.addEventListener('scroll',navState,{passive:true});
+})();
+</script>
+
+<script>
+(function(){
+  var bg = document.getElementById('bgDiffusion');
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (!ticking) {
+      requestAnimationFrame(function(){
+        bg.style.transform = 'translateY(' + (window.scrollY * 0.04) + 'px)';
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
 })();
 </script>
 </body></html>
