@@ -1,33 +1,14 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="blocks_v2.css?v=5">
-
-<style>
-.bg-diffusion {
-  position: fixed;
-  top: -20%;
-  left: -10%;
-  width: 120%;
-  height: 140%;
-  background:
-    radial-gradient(ellipse 80% 60% at 65% 25%, rgba(0, 132, 255, 0.045) 0%, transparent 65%),
-    radial-gradient(ellipse 55% 55% at 15% 78%, rgba(0, 180, 255, 0.028) 0%, transparent 58%),
-    radial-gradient(ellipse 40% 35% at 85% 80%, rgba(100, 210, 255, 0.022) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: 0;
-  will-change: transform;
-}
-.hl-page { position: relative; z-index: 1; }
-</style>
+<link rel="stylesheet" href="blocks_v2.css?v=6">
 </head><body>
-<div class="bg-diffusion" id="bgDiffusion"></div>
 
 <nav class="hl-nav" id="nav"><a class="hl-nav__logo"><img src="logo.png" alt="haler"></a><div class="hl-nav__menu"><a>Product</a><a>Ritual</a><a>Science</a></div><div class="hl-nav__act"><a>Log in</a><button class="gbtn gbtn--sm gbtn--navcta">Start trial</button></div></nav>
 
 <div class="hl-page">
 
-  <!-- 1. HERO — 천장 부착 비디오 블록 (글래스 카드 없음, 텍스트 화이트, 프로스트 버튼) -->
+  <!-- S1. HERO -->
   <section class="hero-v">
     <div class="hero-v__bg"><video src="hero.mp4" autoplay muted loop playsinline preload="auto"></video></div>
     <div class="hero-v__in"><div class="hero-v__box">
@@ -37,30 +18,45 @@
     </div></div>
   </section>
 
-  <!-- 2. 위기 (플레인) -->
+  <!-- S2. 문제제기 (위협→건조가 산뜻함을 앗아감) -->
   <section class="hl-sec">
-    <h2 class="hl-h2">When the air never <span class="ac">slows down.</span></h2>
-    <p class="hl-sub">Dry, recycled, always-on — and not one fresh moment that's truly yours.</p>
+    <h2 class="hl-h2">We all breathe the same.<br>But our days are <span class="ac">not.</span></h2>
+    <p class="hl-sub">Recycled, heated, air-conditioned — the spaces you move through quietly leave your nose and throat less than fresh.</p>
     <div class="hl-stakes">
-      <div class="hl-stake"><div class="hl-stake__ic"><svg viewBox="0 0 24 24"><path d="M6 16a4 4 0 010-8 5 5 0 019.6-1.5A3.5 3.5 0 0118 16z" stroke-linejoin="round"/></svg></div><p>Dry indoor air</p></div>
-      <div class="hl-stake"><div class="hl-stake__ic"><svg viewBox="0 0 24 24"><path d="M3 8c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 14c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke-linecap="round"/></svg></div><p>Endless noise</p></div>
-      <div class="hl-stake"><div class="hl-stake__ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2" stroke-linecap="round"/></svg></div><p>Zero time for you</p></div>
+      <div class="hl-stake"><div class="hl-stake__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3s5 5.5 5 9a5 5 0 01-10 0c0-3.5 5-9 5-9z" stroke-linejoin="round"/></svg></div><p>Dry indoor air</p></div>
+      <div class="hl-stake"><div class="hl-stake__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 15c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke-linecap="round"/></svg></div><p>Recycled cabin air</p></div>
+      <div class="hl-stake"><div class="hl-stake__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2" stroke-linecap="round"/></svg></div><p>Long, screen-lit days</p></div>
     </div>
   </section>
 
-  <!-- 3. 가치 (큼직 bento — 블록 안의 미니 블록) -->
+  <!-- S3. 솔루션 (라이트 과학 — 방어막/mucus 삭제, 촉촉·정상으로) -->
+  <section class="hl-sec">
+    <h2 class="hl-h2">Your nose and throat are built to stay fresh — <span class="ac">on water.</span></h2>
+    <p class="hl-sub">They're lined with a layer that's almost all water. Dry air quietly pulls it away.</p>
+    <div style="margin-top:22px"><a class="gbtn gbtn--text">See the science →</a></div>
+  </section>
+
+  <!-- S4. 브릿지 (임팩트 텍스트) -->
   <section class="hl-block hl-block--airy">
-    <h2 class="hl-h2">Designed around <span class="ac">water.</span></h2>
-    <p class="hl-sub">Three quiet wins, every single day.</p>
-    <div class="hl-bento">
-      <div class="hl-mb c2 r2"><div class="hl-mb__media" style="margin-bottom:0">(사진/3D) — 미스트 오브제</div></div>
-      <div class="hl-mb"><div class="hl-mb__ic"><svg viewBox="0 0 24 24"><path d="M3 9c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 15c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke-linecap="round"/></svg></div><h4>Pure mist</h4><p>A soft, fresh mist.</p></div>
-      <div class="hl-mb"><div class="stat">92%</div><p>hydration this week</p></div>
-      <div class="hl-mb c2"><div class="hl-mb__media">(영상) — A living drop</div><h4>A living drop</h4></div>
+    <h2 class="hl-h2" style="max-width:900px;margin:0 auto">That's why a little <span class="ac">fine hydration</span> goes further than a glass of water — right where the dryness is: your nose and throat.</h2>
+  </section>
+
+  <!-- S5a. 벤토 (bliz = fine hydration + 가치 3카드 + 향 블록) -->
+  <section class="hl-block hl-block--airy">
+    <h2 class="hl-h2">bliz, designed for <span class="ac">fine hydration.</span></h2>
+    <p class="hl-sub">Your nose and throat, always fine. Wherever the day takes you.</p>
+    <div class="hl-value3">
+      <div class="hl-vcard"><div class="hl-vcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke-linecap="round"/></svg></div><h4>Engineered to Target</h4><p>A 6-micrometer mist, made for your nose and throat.</p></div>
+      <div class="hl-vcard"><div class="hl-vcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10c3-3 6 3 9 0s5 2 7 0M4 15c3-3 6 3 9 0s5 2 7 0" stroke-linecap="round"/></svg></div><h4>Diverse Breath Modes</h4><p>Instant &amp; Constant modes for nose or mouth. Breathe your way.</p></div>
+      <div class="hl-vcard"><div class="hl-vcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3s6 6.5 6 11a6 6 0 01-12 0c0-4.5 6-11 6-11z" stroke-linejoin="round"/></svg></div><h4>Pure Formulation</h4><p>No drug. No additives. 98% pure water.</p></div>
+    </div>
+    <div class="hl-scent" style="margin-top:20px;padding:38px 32px;border-radius:24px;background:linear-gradient(135deg,rgba(0,132,255,.10),rgba(0,183,255,.06));text-align:center">
+      <h3 class="hl-h2" style="font-size:clamp(24px,3vw,34px)">Scent. <span class="ac">More than a Sense.</span></h3>
+      <p class="hl-sub" style="margin-top:8px">A little joy for your day — let every moment feel like yours.</p>
     </div>
   </section>
 
-  <!-- 3-b. 제품 (2업 큰 세로 카드 — 블록 안의 블록) -->
+  <!-- S5b. 제품 (2업 — 캡슐/디바이스) -->
   <section class="hl-block hl-block--airy">
     <h2 class="hl-h2">Made for your <span class="ac">day.</span></h2>
     <p class="hl-sub">Two ways bliz fits in.</p>
@@ -70,102 +66,120 @@
     </div>
   </section>
 
-  <!-- 4. 가이드 + 증언 (플레인 + 카드) -->
+  <!-- S6. 디자인 -->
   <section class="hl-sec">
-    <h2 class="hl-h2">We get how hard it is to <span class="ac">care for yourself.</span></h2>
+    <h2 class="hl-h2">Form Follows <span class="ac">Function.</span></h2>
+    <p class="hl-sub">What matters is keeping your nose and throat comfortably hydrated — anytime, anywhere, easy and safe.</p>
+    <div class="hl-value3">
+      <div class="hl-vcard"><div class="hl-vcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="3" width="10" height="18" rx="3"/><path d="M11 6h2" stroke-linecap="round"/></svg></div><h4>Handy &amp; Sleek</h4><p>Pocket-sized, and made to be seen.</p></div>
+      <div class="hl-vcard"><div class="hl-vcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" stroke-linejoin="round"/></svg></div><h4>Safe &amp; Hygienic</h4><p>Sealed single-use capsules. Always clean.</p></div>
+      <div class="hl-vcard"><div class="hl-vcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12l4 4 10-10" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>Easy &amp; Comfy</h4><p>One click. No setup, no manual.</p></div>
+    </div>
+  </section>
+
+  <!-- S7. 가이드 + 증언 -->
+  <section class="hl-sec">
+    <h2 class="hl-h2">Fine hydration, <span class="ac">Fine days.</span></h2>
+    <p class="hl-sub">Everyone has a bliz moment.</p>
     <div class="hl-guide">
-      <p class="hl-guide__empathy">In a day that never stops, in that dry air, making space for yourself is hard. So we made bliz — a small five-minute ritual that doesn't have to be a big deal.</p>
+      <p class="hl-guide__empathy">In a day that never stops, a fresh moment that's fully yours is hard to find. So we made bliz — a small ritual that doesn't have to be a big deal.</p>
       <p class="hl-guide__auth">bliz is not a medical device. It's an honestly well-made daily wellness mist — design and feel over big promises.</p>
     </div>
     <div class="hl-testi">
-      <div class="hl-tcard"><p>"After work I turn on bliz first. Those five minutes are the only part of the day that's fully mine."</p><div class="who"><span class="av"></span><span class="nm">Gina · Designer</span></div></div>
+      <div class="hl-tcard"><p>"After work I reach for bliz first. Those few minutes are the only part of the day that's fully mine."</p><div class="who"><span class="av"></span><span class="nm">Gina · Designer</span></div></div>
       <div class="hl-tcard"><p>"Big self-care never stuck. This I do every day — the object itself is just beautiful."</p><div class="who"><span class="av"></span><span class="nm">Mike</span></div></div>
-      <div class="hl-tcard"><p>"Having a morning ritual changed how my whole day begins."</p><div class="who"><span class="av"></span><span class="nm">Sara</span></div></div>
+      <div class="hl-tcard"><p>"A morning ritual changed how my whole day begins."</p><div class="who"><span class="av"></span><span class="nm">Sara</span></div></div>
     </div>
-    <div class="hl-trust"><span class="hl-chip">General Wellness</span><span class="hl-chip">No menthol</span><span class="hl-chip">Cancel anytime</span></div>
+    <div class="hl-trust"><span class="hl-chip">General Wellness</span><span class="hl-chip">No medicine</span><span class="hl-chip">Cancel anytime</span></div>
+    <div style="margin-top:26px"><button class="gbtn gbtn--blue">Find your bliz moment →</button></div>
   </section>
 
-  <!-- 5. 계획 3단계 (색 블록) -->
+  <!-- S8. 사용방법 -->
   <section class="hl-block hl-block--airy">
-    <h2 class="hl-h2">Your <span class="ac">5-minute</span> reset plan.</h2>
+    <h2 class="hl-h2">It's as smooth as <span class="ac">breathing.</span></h2>
+    <p class="hl-sub">No manual needed. Snap, Click, Breathe — that's all.</p>
     <div class="hl-steps">
-      <div class="hl-step"><p class="hl-step__n">Step 1</p><h4>Start</h4><p>Subscribe and get your device.</p></div>
+      <div class="hl-step"><p class="hl-step__n">Snap</p><h4>Snap</h4><p>Snap the capsule into bliz.</p></div>
       <div class="hl-arrow">→</div>
-      <div class="hl-step"><p class="hl-step__n">Step 2</p><h4>Ritual</h4><p>Five minutes, one mist — just for you.</p></div>
+      <div class="hl-step"><p class="hl-step__n">Click</p><h4>Click</h4><p>Click the button to release the mist.</p></div>
       <div class="hl-arrow">→</div>
-      <div class="hl-step hl-step--last"><p class="hl-step__n">Step 3</p><h4>Reset</h4><p>Return to a fresh, settled day.</p></div>
+      <div class="hl-step hl-step--last"><p class="hl-step__n">Breathe</p><h4>Breathe</h4><p>Breathe the fresh, cool mist freely.</p></div>
     </div>
-    <div style="margin-top:34px"><button class="gbtn gbtn--blue gbtn--lg">Start your trial</button></div>
   </section>
 
-  <!-- 6. 비비드 포인트 블록 (Why bliz) -->
+  <!-- S9. 트라이얼 키트 -->
+  <section class="hl-sec">
+    <h2 class="hl-h2">Don't think twice. Just try it — <span class="ac">it's on us.</span></h2>
+    <p class="hl-sub">Try for 2 weeks, decide within a month. 100% refund or 100% reward — your call.</p>
+    <div class="hl-steps">
+      <div class="hl-step"><p class="hl-step__n">Step 1</p><h4>Get your kit</h4><p>Order bliz with 15 capsules for $99.</p></div>
+      <div class="hl-arrow">→</div>
+      <div class="hl-step"><p class="hl-step__n">Step 2</p><h4>Try 2 weeks</h4><p>Use all 15 capsules and feel the difference.</p></div>
+      <div class="hl-arrow">→</div>
+      <div class="hl-step hl-step--last"><p class="hl-step__n">Step 3</p><h4>Decide in a month</h4><p>Make your call within 30 days.</p></div>
+    </div>
+    <div class="hl-twoup" style="margin-top:26px">
+      <div class="hl-bigcard"><h4>100% Refund</h4><p class="lead">changed your mind?</p><p>Return the device within 30 days. We cover the capsules and shipping. No questions asked.</p></div>
+      <div class="hl-bigcard"><h4>100% Reward</h4><p class="lead">love it?</p><p>Choose a subscription and get your full $99 back as capsule credits.</p></div>
+    </div>
+  </section>
+
+  <!-- S10. Why bliz (비교표 — 감각·향·휴대·의식 축) -->
   <section class="hl-block hl-block--point">
     <h2 class="hl-h2">Why bliz</h2>
-    <div class="hl-pchips"><span class="hl-pchip">Pure water</span><span class="hl-pchip">No medicine</span><span class="hl-pchip">A calm ritual</span></div>
-    <table class="hl-cmp"><thead><tr><th>Feature</th><th style="text-align:center">bliz</th><th style="text-align:center">Others</th></tr></thead><tbody>
-      <tr><td>Pure water mist</td><td class="yes">✓</td><td class="no">—</td></tr>
-      <tr><td>Capsule subscription</td><td class="yes">✓</td><td class="no">—</td></tr>
-      <tr><td>30-day full refund</td><td class="yes">✓</td><td class="no">—</td></tr>
-      <tr><td>A daily ritual, not a treatment</td><td class="yes">✓</td><td class="no">—</td></tr>
+    <div class="hl-pchips"><span class="hl-pchip">Pure water</span><span class="hl-pchip">No medicine</span><span class="hl-pchip">A daily ritual</span></div>
+    <table class="hl-cmp"><thead><tr><th>What matters</th><th style="text-align:center">bliz</th><th style="text-align:center">Drinking Water</th><th style="text-align:center">Humidifier</th><th style="text-align:center">Steam</th></tr></thead><tbody>
+      <tr><td>A fresh, scented moment</td><td class="yes">✓</td><td class="no">—</td><td class="no">—</td><td class="no">—</td></tr>
+      <tr><td>Carry it anywhere</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td><td class="no">—</td></tr>
+      <tr><td>Ready in seconds</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td><td class="no">—</td></tr>
+      <tr><td>Just pure water</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td><td class="no">—</td></tr>
+      <tr><td>Part of your daily ritual</td><td class="yes">✓</td><td class="no">—</td><td class="no">—</td><td class="no">—</td></tr>
     </tbody></table>
+    <p class="hl-sub" style="opacity:.7;font-size:12px;margin-top:14px">※ 비교 항목·표시는 제품 스펙 기준 진 최종확인 필요</p>
   </section>
 
-  <!-- 7. 설명 + 가격 (플레인 + 카드) -->
+  <!-- S11. 가격 -->
   <section class="hl-sec">
-    <h2 class="hl-h2">A fresh moment, <span class="ac">made simple.</span></h2>
-    <p class="hl-explain">bliz is a daily wellness mist ritual that gives a small moment back to busy days. Not a medical device — a beautiful object you reach for every morning, from the belief that self-care doesn't have to be big.</p>
+    <h2 class="hl-h2">Your finest breath, <span class="ac">every day.</span></h2>
+    <p class="hl-explain">You breathe 20,000 times a day, for life — longevity truly matters. That's why a breath ritual is worth less than a cup of coffee a day.</p>
     <div class="hl-pricing">
-      <div class="hl-pcard"><div class="tier">Essential</div><div class="price">$39<small>/mo</small></div><p class="pdesc">The everyday ritual.</p><button class="gbtn gbtn--ghost">Choose</button></div>
-      <div class="hl-pcard hl-pcard--reco"><span class="badge">Most loved</span><div class="tier">Signature</div><div class="price">$49<small>/mo</small></div><p class="pdesc">The most-loved set.</p><button class="gbtn gbtn--blue">Choose</button></div>
-      <div class="hl-pcard"><div class="tier">Ritual+</div><div class="price">$79<small>/mo</small></div><p class="pdesc">Object and refills, all in.</p><button class="gbtn gbtn--ghost">Choose</button></div>
+      <div class="hl-pcard"><div class="tier">Essential</div><div class="price">$39<small>/mo</small></div><p class="pdesc">10 capsules — the everyday ritual.</p><button class="gbtn gbtn--ghost">Choose</button></div>
+      <div class="hl-pcard hl-pcard--reco"><span class="badge">Most loved</span><div class="tier">Signature</div><div class="price">$49<small>/mo</small></div><p class="pdesc">15 capsules — the most-loved set.</p><button class="gbtn gbtn--blue">Choose</button></div>
+      <div class="hl-pcard"><div class="tier">Ritual+</div><div class="price">$79<small>/mo</small></div><p class="pdesc">30 capsules — all in.</p><button class="gbtn gbtn--ghost">Choose</button></div>
     </div>
     <p class="hl-trial"><b>Trial $99</b> — try the ritual first, continue if you love it. · Cancel anytime.</p>
   </section>
 
-  <!-- 8. 전환 CTA 밑밥 (색 블록) -->
+  <!-- S12. Final CTA -->
   <section class="hl-block hl-block--lead">
-    <h2 class="hl-h2">The 5-minute calm <span class="ac">ritual guide.</span></h2>
-    <p class="hl-sub">A free PDF from Haley — five small rituals to reset a tiring day.</p>
-    <div class="hl-lead__form"><input class="hl-lead__input" placeholder="Your email"><button class="gbtn gbtn--blue">Get the guide</button></div>
+    <h2 class="hl-h2">Define what makes you <span class="ac">de-fine.</span></h2>
+    <p class="hl-sub">Take a minute to discover your fresh moment — get a free, personalized scent profile.</p>
+    <div class="hero-v__cta" style="justify-content:center;margin-top:24px">
+      <button class="gbtn gbtn--blue gbtn--lg">Find your bliz moment →</button>
+      <button class="gbtn gbtn--ghost gbtn--lg">Get your risk-free trial kit →</button>
+    </div>
   </section>
 
-  <!-- 9. 푸터 -->
+  <!-- Footer -->
   <footer class="hl-footer">
     <p class="hl-footer__one">A fresh moment, every day — <span class="ac">bliz.</span></p>
     <button class="gbtn gbtn--blue">Start your trial</button>
-    <div class="hl-footer__cols"><span>Product</span><span>Ritual</span><span>FAQ</span><span>Company</span></div>
+    <div class="hl-footer__cols"><span>Product</span><span>Ritual</span><span>Science</span><span>FAQ</span><span>Company</span></div>
     <p class="hl-footer__disc">bliz is a General Wellness product. It is not a medical device and is not intended to diagnose, treat, cure, or prevent any disease.</p>
   </footer>
 
 </div>
 <script>
 (function(){
- var sel='.hl-h2,.hl-sub,.hl-stake,.hl-vcard,.hl-mb,.hl-bigcard,.hl-step,.hl-tcard,.hl-pcard,.hl-explain,.hero__card,.hl-cmp,.hl-pchips,.hl-trial,.hl-lead__form';
+ var sel='.hl-h2,.hl-sub,.hl-stake,.hl-vcard,.hl-mb,.hl-bigcard,.hl-step,.hl-tcard,.hl-pcard,.hl-explain,.hl-scent,.hl-cmp,.hl-pchips,.hl-trial,.hl-lead__form';
  var els=[].slice.call(document.querySelectorAll(sel));
  els.forEach(function(e,i){e.classList.add('sp-reveal');e.style.transitionDelay=((i%3)*0.07)+'s'});
  if(!('IntersectionObserver'in window)){els.forEach(function(e){e.classList.add('sp-in')});return;}
  var io=new IntersectionObserver(function(ents){ents.forEach(function(en){if(en.isIntersecting){en.target.classList.add('sp-in');io.unobserve(en.target)}})},{threshold:.12,rootMargin:'0px 0px -7% 0px'});
  els.forEach(function(e){io.observe(e)});
- // nav: 히어로 위=투명/흰, 스크롤 후=밝은 글래스/다크
  var nav=document.getElementById('nav');
  function navState(){ if(nav) nav.classList.toggle('is-scrolled', window.scrollY > window.innerHeight*0.82); }
  navState(); window.addEventListener('scroll',navState,{passive:true});
-})();
-</script>
-
-<script>
-(function(){
-  var bg = document.getElementById('bgDiffusion');
-  var ticking = false;
-  window.addEventListener('scroll', function(){
-    if (!ticking) {
-      requestAnimationFrame(function(){
-        bg.style.transform = 'translateY(' + (window.scrollY * 0.04) + 'px)';
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, { passive: true });
 })();
 </script>
 </body></html>
