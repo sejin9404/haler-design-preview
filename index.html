@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="blocks_v2.css?v=157">
+<link rel="stylesheet" href="blocks_v2.css?v=158">
 </head><body>
 
 <div class="bg-orbs" aria-hidden="true"><span class="orb orb--a"></span><span class="orb orb--b"></span><span class="orb orb--c"></span><span class="orb orb--d"></span></div>
@@ -120,7 +120,7 @@
         <div class="hl-cta"><button class="gbtn">Learn more</button></div>
       </div>
       <div class="hl-sec-magic__in hl-sec-magic__in--b" id="magicIn2">
-        <h2 class="hl-h2">a formula for <span class="ac">breath hydration</span></h2>
+        <h2 class="hl-h2">a formula for<br><span class="ac">breath hydration</span></h2>
         <p class="hl-sub">Breath care doesn't need fancy ingredients.<br>Just water at a concentration close to your body's own —<br>and only what keeps it that way.</p>
         <div class="hl-cta"><button class="gbtn">Learn more</button></div>
       </div>
@@ -432,20 +432,26 @@
      if(m1c){ m1c.style.filter=m1s.style.filter; m1c.style.opacity=tS.toFixed(3); }
      /* ② 축소 — 베일인이 끝난 뒤부터 진행 */
      var pS=pinned? mc01((p-MAGIC_VEIL)/(1-MAGIC_VEIL)) : p;
-     var scale=0.88-pS*0.63; /* 시작 88% → 최종 25% */
-     magicBg.style.transform='scale('+scale.toFixed(3)+')';
+     var scale=0.88-pS*0.50; /* 시작 88% → 최종 38% */
+     /* xem 텍스트 등장 진행도(en)에 맞춰 물방울 그룹이 화면 상단부로 살짝 이동 */
+     var en=mss(mc01((pS-0.78)/0.20));
+     var lift=en*(window.innerWidth>768?0.14:0.17)*vh;
+     var liftT='translateY('+(-lift).toFixed(1)+'px) ';
+     magicBg.style.transform=liftT+'scale('+scale.toFixed(3)+')';
      if(magicOrbitWrap){
-       var ot=mss(mc01((0.7-scale)/0.3)); /* 궤도: 물방울이 70% "크기"가 되면서부터 등장 */
+       var ot=mss(mc01((0.70-scale)/0.10)); /* 궤도: 물방울이 70% "크기"가 되면서부터 등장 */
        magicOrbitWrap.style.opacity=ot.toFixed(3);
-       magicOrbitWrap.style.transform='scale('+scale.toFixed(3)+')'; /* 영상과 같은 배율로 함께 축소 */
-       if(magicLabel){ var ol=mss(mc01((0.45-scale)/0.15)); magicLabel.style.opacity=ol.toFixed(3); } /* xem.은 궤도보다 늦게 — 45% 크기부터 등장 */
+       magicOrbitWrap.style.transform=liftT+'scale('+scale.toFixed(3)+')'; /* 영상과 같은 배율·이동 */
+       if(magicLabel){
+         magicLabel.style.opacity=mss(mc01((0.55-scale)/0.09)).toFixed(3); /* xem.은 궤도보다 늦게 */
+         magicLabel.style.transform='translate(-50%,-50%) '+liftT;
+       }
      }
      /* ③ 텍스트 교대 — 첫 텍스트는 축소 30% 지점까지 머물다가 제자리에서 베일 아웃, xem 텍스트는 물방울이 거의 다 작아진 뒤에야 상승 */
      var ex=mss(mc01((pS-0.30)/0.30));
      magicIn1.style.filter='blur('+(ex*14).toFixed(1)+'px)';
      magicIn1.style.opacity=(1-ex).toFixed(3);
      magicIn1.style.pointerEvents = ex>0.5 ? 'none' : 'auto';
-     var en=mss(mc01((pS-0.78)/0.20));
      magicIn2.style.transform='translateY('+(((1-en)*58).toFixed(2))+'vh)';
      magicIn2.style.opacity=en.toFixed(3);
      magicIn2.style.pointerEvents = en>0.5 ? 'auto' : 'none';

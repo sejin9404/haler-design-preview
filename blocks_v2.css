@@ -128,7 +128,7 @@ img{max-width:100%}
   border:1.5px solid rgba(0,140,255,.18)}
 .hl-sec-magic__orbit{position:absolute;left:0;top:0;width:0;height:0;
   animation:hl-orbit-spin 22s linear infinite}
-.hl-sec-magic__orb{position:absolute;top:0;left:0;width:260px;height:260px;margin:-130px;border-radius:50%;
+.hl-sec-magic__orb{position:absolute;top:0;left:0;width:210px;height:210px;margin:-105px;border-radius:50%;
   background:rgba(255,255,255,.92);box-shadow:0 0 20px rgba(0,140,255,.55),0 0 5px rgba(255,255,255,.9)}
 .hl-sec-magic__orb--1{transform:rotate(0deg) translateX(var(--orbit-r))}
 .hl-sec-magic__orb--2{transform:rotate(120deg) translateX(var(--orbit-r))}
@@ -520,8 +520,8 @@ img{max-width:100%}
      물방울 좌우가 잘리므로, 박스 높이를 줄여 확대율을 낮추고 물방울 전체가 화면 폭 안에 들어오게 함 */
   .hl-sec-magic__bg{inset:auto 0 auto 0;height:52vh;height:52svh;top:50%;margin-top:-26vh;margin-top:-26svh}
   /* 궤도는 화면 폭 기준 — 반지름이 뷰포트 절반을 넘으면 원이 화면 밖으로 나가버림 */
-  .hl-sec-magic__orbitwrap{--orbit-r:42vw}
-  .hl-sec-magic__orb{width:46px;height:46px;margin:-23px;box-shadow:0 0 14px rgba(0,140,255,.55),0 0 4px rgba(255,255,255,.9)}
+  .hl-sec-magic__orbitwrap{--orbit-r:52vw}
+  .hl-sec-magic__orb{width:68px;height:68px;margin:-34px;box-shadow:0 0 18px rgba(0,140,255,.55),0 0 5px rgba(255,255,255,.9)}
   .hl-sec-magic__ring{border-width:1px}
   .hl-sec-magic__label{font-size:22px}
   /* 하단 고정 트라이얼 바(mfcta)와 겹치지 않도록 그 높이만큼 띄움 */
