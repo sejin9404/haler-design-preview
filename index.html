@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="blocks_v2.css?v=153">
+<link rel="stylesheet" href="blocks_v2.css?v=157">
 </head><body>
 
 <div class="bg-orbs" aria-hidden="true"><span class="orb orb--a"></span><span class="orb orb--b"></span><span class="orb orb--c"></span><span class="orb orb--d"></span></div>
@@ -412,24 +412,26 @@
    function mss(x){return x*x*(3-2*x);}
    var MAGIC_VEIL=0.15; /* 핀 구간 앞 15%는 베일인 전용 */
    function magicScrub(){
-     var vh=window.innerHeight, p, desk=window.innerWidth>768;
-     if(desk){
-       var r=magicScene.getBoundingClientRect();
-       if(r.bottom<-50 || r.top>vh+50) return; /* 화면 밖이면 스킵 */
-       var total=r.height-vh;
-       p=total>0 ? mc01(-r.top/total) : 0; /* 0=고정 시작, 1=고정 구간 끝 */
+     var vh=window.innerHeight, p;
+     var r=magicScene.getBoundingClientRect();
+     if(r.bottom<-50 || r.top>vh+50) return; /* 화면 밖이면 스킵 */
+     /* 씬이 sticky 높이보다 크면 핀 구간(런웨이)이 있는 것 — 데스크탑·모바일 모두 같은 진행도 계산을 씀 */
+     var stickyH=magicSticky.getBoundingClientRect().height;
+     var pinned=r.height>stickyH+10;
+     if(pinned){
+       var total=r.height-stickyH;
+       p=mc01(-r.top/total); /* 0=고정 시작, 1=고정 구간 끝 */
      } else {
-       var r2=magicSticky.getBoundingClientRect();
-       p=mc01((vh-r2.top)/(vh+r2.height)); /* 0=진입 시작, 1=완전히 지나감 */
+       p=mc01((vh-r.top)/(vh+r.height)); /* 핀 없는 폴백: 진입~통과 */
      }
      /* ① 베일인 — 대제목 먼저, 소제목·버튼이 반박자 뒤에 */
-     var tT=desk? mss(mc01(p/0.08)) : 1;
-     var tS=desk? mss(mc01((p-0.05)/0.09)) : 1;
+     var tT=pinned? mss(mc01(p/0.08)) : 1;
+     var tS=pinned? mss(mc01((p-0.05)/0.09)) : 1;
      m1h.style.filter='blur('+((1-tT)*14).toFixed(1)+'px)'; m1h.style.opacity=tT.toFixed(3);
      m1s.style.filter='blur('+((1-tS)*14).toFixed(1)+'px)'; m1s.style.opacity=tS.toFixed(3);
      if(m1c){ m1c.style.filter=m1s.style.filter; m1c.style.opacity=tS.toFixed(3); }
      /* ② 축소 — 베일인이 끝난 뒤부터 진행 */
-     var pS=desk? mc01((p-MAGIC_VEIL)/(1-MAGIC_VEIL)) : p;
+     var pS=pinned? mc01((p-MAGIC_VEIL)/(1-MAGIC_VEIL)) : p;
      var scale=0.88-pS*0.63; /* 시작 88% → 최종 25% */
      magicBg.style.transform='scale('+scale.toFixed(3)+')';
      if(magicOrbitWrap){
