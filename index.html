@@ -1,58 +1,129 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="blocks_v2.css?v=6">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="blocks_v2.css?v=153">
 </head><body>
 
-<nav class="hl-nav" id="nav"><a class="hl-nav__logo"><img src="logo.png" alt="haler"></a><div class="hl-nav__menu"><a>Product</a><a>Ritual</a><a>Science</a></div><div class="hl-nav__act"><a>Log in</a><button class="gbtn gbtn--sm gbtn--navcta">Start trial</button></div></nav>
+<div class="bg-orbs" aria-hidden="true"><span class="orb orb--a"></span><span class="orb orb--b"></span><span class="orb orb--c"></span><span class="orb orb--d"></span></div>
+
+<nav class="hl-nav" id="nav"><a class="hl-nav__logo"><img src="logo.png" alt="haler"></a><div class="hl-nav__menu"><a>Product</a><a>Ritual</a><a>Science</a></div><div class="hl-nav__act"><a>Log in</a><button class="gbtn gbtn--sm">Start trial</button></div><div class="mnav-right"><button class="gbtn gbtn--sm mnav-cta">Start trial</button><button class="mnav-burger" id="burger" aria-label="Menu"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></div></nav>
+
+<div class="nav-hotzone" id="hotzone"></div>
+<div class="mnav-backdrop" id="mbackdrop"></div>
+<div class="mfcta" id="mfcta"><button class="gbtn mfcta__btn">Start your trial</button></div>
+<div class="mnav-panel" id="mpanel"><div class="mnav-panel__in"><a class="mnav-link">Product</a><a class="mnav-link">Ritual</a><a class="mnav-link">Science</a><div class="mnav-foot"><span>Instagram</span><span>Support</span><span>Legal</span></div></div></div>
+
+<!-- S1. HERO -->
+<section class="hero-v">
+  <div class="hero-v__bg"><video src="hero.mp4" autoplay muted loop playsinline preload="auto"></video></div>
+  <div class="hero-v__in"><div class="hero-v__box">
+    <h1 class="hl-h1 hero-h1-desktop">Hydrate. Breathe. <span class="ac">Rebalance.</span></h1>
+    <h1 class="hl-h1 hero-h1-mobile">Hydrate.<br>Breathe.<br><span class="ac">Rebalance.</span></h1>
+    <p class="hero-v__sub">A daily self-care mist you carry — pure water, a hint of scent.</p>
+    <div class="hero-v__cta"><button class="gbtn gbtn--xl">Start your trial</button></div>
+  </div></div>
+</section>
 
 <div class="hl-page">
 
-  <!-- S1. HERO -->
-  <section class="hero-v">
-    <div class="hero-v__bg"><video src="hero.mp4" autoplay muted loop playsinline preload="auto"></video></div>
-    <div class="hero-v__in"><div class="hero-v__box">
-      <h1 class="hl-h1">Fresh. Clean. <span class="ac">Yours.</span></h1>
-      <p class="hero-v__sub">A daily self-care mist you carry — pure water, a hint of scent.</p>
-      <div class="hero-v__cta"><button class="gbtn gbtn--hero">Start your trial</button><a class="hero-v__link">See how it works →</a></div>
-    </div></div>
+  <!-- S1b. 훅 문장 (히어로 바로 아래) -->
+  <section class="hl-sec hl-sec--hook">
+    <h2 class="hl-h2">When did you last<br><span class="ac">breathe truly fresh?</span></h2>
+    <p class="hl-sub">You never stop breathing —<br>from your first day to your last.<br>That's how much it shapes your day.<br>So, are you really breathing comfortably?<br><b>If you're not, it's probably because of these.</b></p>
   </section>
 
-  <!-- S2. 문제제기 (위협→건조가 산뜻함을 앗아감) -->
-  <section class="hl-sec">
-    <h2 class="hl-h2">We all breathe the same.<br>But our days are <span class="ac">not.</span></h2>
-    <p class="hl-sub">Recycled, heated, air-conditioned — the spaces you move through quietly leave your nose and throat less than fresh.</p>
-    <div class="hl-stakes">
-      <div class="hl-stake"><div class="hl-stake__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3s5 5.5 5 9a5 5 0 01-10 0c0-3.5 5-9 5-9z" stroke-linejoin="round"/></svg></div><p>Dry indoor air</p></div>
-      <div class="hl-stake"><div class="hl-stake__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 15c2-2 4-2 6 0s4 2 6 0 4-2 6 0" stroke-linecap="round"/></svg></div><p>Recycled cabin air</p></div>
-      <div class="hl-stake"><div class="hl-stake__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2" stroke-linecap="round"/></svg></div><p>Long, screen-lit days</p></div>
+  <!-- S2. 문제제기 (실사 이미지 카드 2줄 무한 슬라이드 — 데스크탑은 1번째 줄만 노출) -->
+  <section class="hl-sec hl-sec--carousel">
+    <div class="hl-marquee">
+      <div class="hl-marquee__track">
+        <div class="hl-mcard"><img class="hl-mcard__img" src="photos/mold-spores.jpg" alt="Mold spores"><img class="hl-mcard__img hl-mcard__img--b1" src="photos/mold-spores.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b2" src="photos/mold-spores.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b3" src="photos/mold-spores.jpg" alt="" aria-hidden="true"><span class="hl-mcard__tone"></span><span class="hl-mcard__label">Mold spores</span></div>
+        <div class="hl-mcard"><img class="hl-mcard__img" src="photos/pet-hair.jpg" alt="Pet hair"><img class="hl-mcard__img hl-mcard__img--b1" src="photos/pet-hair.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b2" src="photos/pet-hair.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b3" src="photos/pet-hair.jpg" alt="" aria-hidden="true"><span class="hl-mcard__tone"></span><span class="hl-mcard__label">Pet hair</span></div>
+        <div class="hl-mcard"><img class="hl-mcard__img" src="photos/pollen.jpg" alt="Pollen"><img class="hl-mcard__img hl-mcard__img--b1" src="photos/pollen.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b2" src="photos/pollen.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b3" src="photos/pollen.jpg" alt="" aria-hidden="true"><span class="hl-mcard__tone"></span><span class="hl-mcard__label">Pollen</span></div>
+        <div class="hl-mcard"><img class="hl-mcard__img" src="photos/dust.jpg" alt="Dust"><img class="hl-mcard__img hl-mcard__img--b1" src="photos/dust.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b2" src="photos/dust.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b3" src="photos/dust.jpg" alt="" aria-hidden="true"><span class="hl-mcard__tone"></span><span class="hl-mcard__label">Dust</span></div>
+        <div class="hl-mcard"><img class="hl-mcard__img" src="photos/fine-dust.jpg" alt="Fine dust"><img class="hl-mcard__img hl-mcard__img--b1" src="photos/fine-dust.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b2" src="photos/fine-dust.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b3" src="photos/fine-dust.jpg" alt="" aria-hidden="true"><span class="hl-mcard__tone"></span><span class="hl-mcard__label">Fine dust</span></div>
+        <div class="hl-mcard" aria-hidden="true"><img class="hl-mcard__img" src="photos/mold-spores.jpg" alt=""><img class="hl-mcard__img hl-mcard__img--b1" src="photos/mold-spores.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b2" src="photos/mold-spores.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b3" src="photos/mold-spores.jpg" alt="" aria-hidden="true"><span class="hl-mcard__tone"></span><span class="hl-mcard__label">Mold spores</span></div>
+        <div class="hl-mcard" aria-hidden="true"><img class="hl-mcard__img" src="photos/pet-hair.jpg" alt=""><img class="hl-mcard__img hl-mcard__img--b1" src="photos/pet-hair.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b2" src="photos/pet-hair.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b3" src="photos/pet-hair.jpg" alt="" aria-hidden="true"><span class="hl-mcard__tone"></span><span class="hl-mcard__label">Pet hair</span></div>
+        <div class="hl-mcard" aria-hidden="true"><img class="hl-mcard__img" src="photos/pollen.jpg" alt=""><img class="hl-mcard__img hl-mcard__img--b1" src="photos/pollen.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b2" src="photos/pollen.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b3" src="photos/pollen.jpg" alt="" aria-hidden="true"><span class="hl-mcard__tone"></span><span class="hl-mcard__label">Pollen</span></div>
+        <div class="hl-mcard" aria-hidden="true"><img class="hl-mcard__img" src="photos/dust.jpg" alt=""><img class="hl-mcard__img hl-mcard__img--b1" src="photos/dust.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b2" src="photos/dust.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b3" src="photos/dust.jpg" alt="" aria-hidden="true"><span class="hl-mcard__tone"></span><span class="hl-mcard__label">Dust</span></div>
+        <div class="hl-mcard" aria-hidden="true"><img class="hl-mcard__img" src="photos/fine-dust.jpg" alt=""><img class="hl-mcard__img hl-mcard__img--b1" src="photos/fine-dust.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b2" src="photos/fine-dust.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b3" src="photos/fine-dust.jpg" alt="" aria-hidden="true"><span class="hl-mcard__tone"></span><span class="hl-mcard__label">Fine dust</span></div>
+      </div>
+      <div class="hl-marquee__track hl-marquee__track--b">
+        <div class="hl-mcard"><img class="hl-mcard__img" src="photos/exhaust.jpg" alt="Exhaust fumes"><img class="hl-mcard__img hl-mcard__img--b1" src="photos/exhaust.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b2" src="photos/exhaust.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b3" src="photos/exhaust.jpg" alt="" aria-hidden="true"><span class="hl-mcard__tone"></span><span class="hl-mcard__label">Exhaust fumes</span></div>
+        <div class="hl-mcard"><img class="hl-mcard__img" src="photos/wildfire-smoke.jpg" alt="Wildfire smoke"><img class="hl-mcard__img hl-mcard__img--b1" src="photos/wildfire-smoke.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b2" src="photos/wildfire-smoke.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b3" src="photos/wildfire-smoke.jpg" alt="" aria-hidden="true"><span class="hl-mcard__tone"></span><span class="hl-mcard__label">Wildfire smoke</span></div>
+        <div class="hl-mcard"><img class="hl-mcard__img" src="photos/house-dust.jpg" alt="House dust"><img class="hl-mcard__img hl-mcard__img--b1" src="photos/house-dust.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b2" src="photos/house-dust.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b3" src="photos/house-dust.jpg" alt="" aria-hidden="true"><span class="hl-mcard__tone"></span><span class="hl-mcard__label">House dust</span></div>
+        <div class="hl-mcard"><img class="hl-mcard__img" src="photos/pine-pollen.jpg" alt="Pine pollen"><img class="hl-mcard__img hl-mcard__img--b1" src="photos/pine-pollen.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b2" src="photos/pine-pollen.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b3" src="photos/pine-pollen.jpg" alt="" aria-hidden="true"><span class="hl-mcard__tone"></span><span class="hl-mcard__label">Pine pollen</span></div>
+        <div class="hl-mcard"><img class="hl-mcard__img" src="photos/dry-air.jpg" alt="Dry air"><img class="hl-mcard__img hl-mcard__img--b1" src="photos/dry-air.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b2" src="photos/dry-air.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b3" src="photos/dry-air.jpg" alt="" aria-hidden="true"><span class="hl-mcard__tone"></span><span class="hl-mcard__label">Dry air</span></div>
+        <div class="hl-mcard" aria-hidden="true"><img class="hl-mcard__img" src="photos/exhaust.jpg" alt=""><img class="hl-mcard__img hl-mcard__img--b1" src="photos/exhaust.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b2" src="photos/exhaust.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b3" src="photos/exhaust.jpg" alt="" aria-hidden="true"><span class="hl-mcard__tone"></span><span class="hl-mcard__label">Exhaust fumes</span></div>
+        <div class="hl-mcard" aria-hidden="true"><img class="hl-mcard__img" src="photos/wildfire-smoke.jpg" alt=""><img class="hl-mcard__img hl-mcard__img--b1" src="photos/wildfire-smoke.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b2" src="photos/wildfire-smoke.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b3" src="photos/wildfire-smoke.jpg" alt="" aria-hidden="true"><span class="hl-mcard__tone"></span><span class="hl-mcard__label">Wildfire smoke</span></div>
+        <div class="hl-mcard" aria-hidden="true"><img class="hl-mcard__img" src="photos/house-dust.jpg" alt=""><img class="hl-mcard__img hl-mcard__img--b1" src="photos/house-dust.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b2" src="photos/house-dust.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b3" src="photos/house-dust.jpg" alt="" aria-hidden="true"><span class="hl-mcard__tone"></span><span class="hl-mcard__label">House dust</span></div>
+        <div class="hl-mcard" aria-hidden="true"><img class="hl-mcard__img" src="photos/pine-pollen.jpg" alt=""><img class="hl-mcard__img hl-mcard__img--b1" src="photos/pine-pollen.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b2" src="photos/pine-pollen.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b3" src="photos/pine-pollen.jpg" alt="" aria-hidden="true"><span class="hl-mcard__tone"></span><span class="hl-mcard__label">Pine pollen</span></div>
+        <div class="hl-mcard" aria-hidden="true"><img class="hl-mcard__img" src="photos/dry-air.jpg" alt=""><img class="hl-mcard__img hl-mcard__img--b1" src="photos/dry-air.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b2" src="photos/dry-air.jpg" alt="" aria-hidden="true"><img class="hl-mcard__img hl-mcard__img--b3" src="photos/dry-air.jpg" alt="" aria-hidden="true"><span class="hl-mcard__tone"></span><span class="hl-mcard__label">Dry air</span></div>
+      </div>
     </div>
   </section>
 
-  <!-- S3. 솔루션 (라이트 과학 — 방어막/mucus 삭제, 촉촉·정상으로) -->
-  <section class="hl-sec">
-    <h2 class="hl-h2">Your nose and throat are built to stay fresh — <span class="ac">on water.</span></h2>
-    <p class="hl-sub">They're lined with a layer that's almost all water. Dry air quietly pulls it away.</p>
-    <div style="margin-top:22px"><a class="gbtn gbtn--text">See the science →</a></div>
-  </section>
-
-  <!-- S4. 브릿지 (임팩트 텍스트) -->
-  <section class="hl-block hl-block--airy">
-    <h2 class="hl-h2" style="max-width:900px;margin:0 auto">That's why a little <span class="ac">fine hydration</span> goes further than a glass of water — right where the dryness is: your nose and throat.</h2>
-  </section>
-
-  <!-- S5a. 벤토 (bliz = fine hydration + 가치 3카드 + 향 블록) -->
-  <section class="hl-block hl-block--airy">
-    <h2 class="hl-h2">bliz, designed for <span class="ac">fine hydration.</span></h2>
-    <p class="hl-sub">Your nose and throat, always fine. Wherever the day takes you.</p>
-    <div class="hl-value3">
-      <div class="hl-vcard"><div class="hl-vcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke-linecap="round"/></svg></div><h4>Engineered to Target</h4><p>A 6-micrometer mist, made for your nose and throat.</p></div>
-      <div class="hl-vcard"><div class="hl-vcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10c3-3 6 3 9 0s5 2 7 0M4 15c3-3 6 3 9 0s5 2 7 0" stroke-linecap="round"/></svg></div><h4>Diverse Breath Modes</h4><p>Instant &amp; Constant modes for nose or mouth. Breathe your way.</p></div>
-      <div class="hl-vcard"><div class="hl-vcard__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3s6 6.5 6 11a6 6 0 01-12 0c0-4.5 6-11 6-11z" stroke-linejoin="round"/></svg></div><h4>Pure Formulation</h4><p>No drug. No additives. 98% pure water.</p></div>
+  <!-- S3. 솔루션 — haler.co ANATOMY 섹션 포팅 (인터랙티브 호흡기 카드) -->
+  <section class="hl-sec hl-anatomy-sec">
+    <div class="hl-anatomy" id="anatomy">
+      <div class="hl-anatomy__head">
+        <h2 class="hl-h2">Your breath system<br><span class="ac">run on moisture.</span></h2>
+        <p class="hl-sub">Dry air pulls it away faster<br>than your body puts it back.</p>
+      </div>
+      <div class="hl-anatomy__cardwrap">
+        <div class="hl-anatomy__card">
+          <div class="hl-anatomy__row">
+            <h4 class="hl-anatomy__spot" id="anat-title">Nasal Cavity</h4>
+            <div class="hl-anatomy__dots" id="anat-dots"></div>
+          </div>
+          <p class="hl-anatomy__desc" id="anat-desc"></p>
+        </div>
+      </div>
+      <div class="hl-anatomy__figure">
+        <img src="img_respiratory.png" alt="Airway anatomy">
+        <div class="hl-anatomy__points" id="anat-points"></div>
+      </div>
     </div>
-    <div class="hl-scent" style="margin-top:20px;padding:38px 32px;border-radius:24px;background:linear-gradient(135deg,rgba(0,132,255,.10),rgba(0,183,255,.06));text-align:center">
-      <h3 class="hl-h2" style="font-size:clamp(24px,3vw,34px)">Scent. <span class="ac">More than a Sense.</span></h3>
-      <p class="hl-sub" style="margin-top:8px">A little joy for your day — let every moment feel like yours.</p>
+  </section>
+
+  <!-- S4+S5a. 시네마틱 조립 씬: 베일 인 → 텍스트 점등 → 베일 아웃 → fine hydration 좌측 이동 → S5 조립 -->
+  <section class="bridge-scene" id="bscene">
+    <div class="bridge-sticky">
+      <div class="bridge-veil" id="bveil">
+        <video src="waterball.webm" autoplay muted loop playsinline preload="auto"></video>
+      </div>
+      <!-- 임팩트 문장 (뷰포트 중앙 오버레이) — 물방울 베일인 → 단어 점등 → 페이드아웃 -->
+      <h2 class="hl-h2 bridge-txt" id="bridge">That's why you need <span class="ac" id="fh">fine hydration</span> —<br>a <span class="ac">water rebalance</span> for your breath system.</h2>
+    </div>
+  </section>
+
+  <!-- S4b. fine hydration 정의 -->
+  <section class="hl-sec hl-sec--define">
+    <h2 class="hl-h2">What's <span class="ac">fine hydration</span>?</h2>
+    <p class="hl-sub">Drinking water is vital for your body — but absorbed all over,<br>it takes hours to reach your breath system.<br>A fine mist rebalances the moisture directly, right where you breathe.</p>
+  </section>
+
+  <!-- S4c. 6 micrometer magic → xem (핀 고정 시네마틱) — ①대제목·소제목 순차 베일인 ②물방울 축소 ③xem 텍스트 교대.
+       궤도는 영상 박스 밖 오버레이(잘림 방지), JS가 영상과 같은 배율로 함께 축소 -->
+  <section class="hl-sec-magic-scene" id="magicScene">
+    <div class="hl-sec-magic-sticky">
+      <div class="hl-sec-magic__bg" id="magicBg">
+        <video src="waterball.webm" autoplay muted loop playsinline preload="auto"></video>
+      </div>
+      <div class="hl-sec-magic__orbitwrap" id="magicOrbitWrap">
+        <span class="hl-sec-magic__ring"></span>
+        <div class="hl-sec-magic__orbit"><span class="hl-sec-magic__orb hl-sec-magic__orb--1"></span><span class="hl-sec-magic__orb hl-sec-magic__orb--2"></span><span class="hl-sec-magic__orb hl-sec-magic__orb--3"></span></div>
+      </div>
+      <div class="hl-sec-magic__label" id="magicLabel">xem.</div>
+      <div class="hl-sec-magic__in" id="magicIn1">
+        <h2 class="hl-h2">6 micrometer <span class="ac">magic.</span></h2>
+        <p class="hl-sub">Cloudy, soft, and delicate 6-micrometer mist particles deliver moisture directly to your nose and throat, keeping it hydrated.</p>
+        <div class="hl-cta"><button class="gbtn">Learn more</button></div>
+      </div>
+      <div class="hl-sec-magic__in hl-sec-magic__in--b" id="magicIn2">
+        <h2 class="hl-h2">a formula for <span class="ac">breath hydration</span></h2>
+        <p class="hl-sub">Breath care doesn't need fancy ingredients.<br>Just water at a concentration close to your body's own —<br>and only what keeps it that way.</p>
+        <div class="hl-cta"><button class="gbtn">Learn more</button></div>
+      </div>
     </div>
   </section>
 
@@ -61,8 +132,8 @@
     <h2 class="hl-h2">Made for your <span class="ac">day.</span></h2>
     <p class="hl-sub">Two ways bliz fits in.</p>
     <div class="hl-twoup">
-      <div class="hl-bigcard"><h4>Pure-water capsule</h4><p class="lead">just water, nothing else</p><div class="hl-bigcard__media">(3D) — 캡슐</div><button class="gbtn gbtn--ghost">Learn more</button></div>
-      <div class="hl-bigcard"><h4>The bliz device</h4><p class="lead">your ritual object</p><div class="hl-bigcard__media">(사진) — 디바이스</div><button class="gbtn gbtn--blue">See it</button></div>
+      <div class="hl-bigcard"><h4>Pure-water capsule</h4><p class="lead">just water, nothing else</p><div class="hl-bigcard__media">(3D) — 캡슐</div><button class="gbtn">Learn more</button></div>
+      <div class="hl-bigcard"><h4>The bliz device</h4><p class="lead">your ritual object</p><div class="hl-bigcard__media">(사진) — 디바이스</div><button class="gbtn">See it</button></div>
     </div>
   </section>
 
@@ -85,13 +156,17 @@
       <p class="hl-guide__empathy">In a day that never stops, a fresh moment that's fully yours is hard to find. So we made bliz — a small ritual that doesn't have to be a big deal.</p>
       <p class="hl-guide__auth">bliz is not a medical device. It's an honestly well-made daily wellness mist — design and feel over big promises.</p>
     </div>
-    <div class="hl-testi">
-      <div class="hl-tcard"><p>"After work I reach for bliz first. Those few minutes are the only part of the day that's fully mine."</p><div class="who"><span class="av"></span><span class="nm">Gina · Designer</span></div></div>
-      <div class="hl-tcard"><p>"Big self-care never stuck. This I do every day — the object itself is just beautiful."</p><div class="who"><span class="av"></span><span class="nm">Mike</span></div></div>
-      <div class="hl-tcard"><p>"A morning ritual changed how my whole day begins."</p><div class="who"><span class="av"></span><span class="nm">Sara</span></div></div>
+    <div class="hl-marquee hl-marquee--testi">
+      <div class="hl-marquee__track">
+        <div class="hl-tcard"><p>"After work I reach for bliz first. Those few minutes are the only part of the day that's fully mine."</p><div class="who"><span class="av"></span><span class="nm">Gina · Designer</span></div></div>
+        <div class="hl-tcard"><p>"Big self-care never stuck. This I do every day — the object itself is just beautiful."</p><div class="who"><span class="av"></span><span class="nm">Mike</span></div></div>
+        <div class="hl-tcard"><p>"A morning ritual changed how my whole day begins."</p><div class="who"><span class="av"></span><span class="nm">Sara</span></div></div>
+        <div class="hl-tcard" aria-hidden="true"><p>"After work I reach for bliz first. Those few minutes are the only part of the day that's fully mine."</p><div class="who"><span class="av"></span><span class="nm">Gina · Designer</span></div></div>
+        <div class="hl-tcard" aria-hidden="true"><p>"Big self-care never stuck. This I do every day — the object itself is just beautiful."</p><div class="who"><span class="av"></span><span class="nm">Mike</span></div></div>
+        <div class="hl-tcard" aria-hidden="true"><p>"A morning ritual changed how my whole day begins."</p><div class="who"><span class="av"></span><span class="nm">Sara</span></div></div>
+      </div>
     </div>
-    <div class="hl-trust"><span class="hl-chip">General Wellness</span><span class="hl-chip">No medicine</span><span class="hl-chip">Cancel anytime</span></div>
-    <div style="margin-top:26px"><button class="gbtn gbtn--blue">Find your bliz moment →</button></div>
+    <div style="margin-top:26px"><button class="gbtn">Find your bliz moment →</button></div>
   </section>
 
   <!-- S8. 사용방법 -->
@@ -143,9 +218,9 @@
     <h2 class="hl-h2">Your finest breath, <span class="ac">every day.</span></h2>
     <p class="hl-explain">You breathe 20,000 times a day, for life — longevity truly matters. That's why a breath ritual is worth less than a cup of coffee a day.</p>
     <div class="hl-pricing">
-      <div class="hl-pcard"><div class="tier">Essential</div><div class="price">$39<small>/mo</small></div><p class="pdesc">10 capsules — the everyday ritual.</p><button class="gbtn gbtn--ghost">Choose</button></div>
-      <div class="hl-pcard hl-pcard--reco"><span class="badge">Most loved</span><div class="tier">Signature</div><div class="price">$49<small>/mo</small></div><p class="pdesc">15 capsules — the most-loved set.</p><button class="gbtn gbtn--blue">Choose</button></div>
-      <div class="hl-pcard"><div class="tier">Ritual+</div><div class="price">$79<small>/mo</small></div><p class="pdesc">30 capsules — all in.</p><button class="gbtn gbtn--ghost">Choose</button></div>
+      <div class="hl-pcard"><div class="tier">Essential</div><div class="price">$39<small>/mo</small></div><p class="pdesc">10 capsules — the everyday ritual.</p><button class="gbtn">Choose</button></div>
+      <div class="hl-pcard hl-pcard--reco"><span class="badge">Most loved</span><div class="tier">Signature</div><div class="price">$49<small>/mo</small></div><p class="pdesc">15 capsules — the most-loved set.</p><button class="gbtn">Choose</button></div>
+      <div class="hl-pcard"><div class="tier">Ritual+</div><div class="price">$79<small>/mo</small></div><p class="pdesc">30 capsules — all in.</p><button class="gbtn">Choose</button></div>
     </div>
     <p class="hl-trial"><b>Trial $99</b> — try the ritual first, continue if you love it. · Cancel anytime.</p>
   </section>
@@ -155,15 +230,15 @@
     <h2 class="hl-h2">Define what makes you <span class="ac">de-fine.</span></h2>
     <p class="hl-sub">Take a minute to discover your fresh moment — get a free, personalized scent profile.</p>
     <div class="hero-v__cta" style="justify-content:center;margin-top:24px">
-      <button class="gbtn gbtn--blue gbtn--lg">Find your bliz moment →</button>
-      <button class="gbtn gbtn--ghost gbtn--lg">Get your risk-free trial kit →</button>
+      <button class="gbtn gbtn--lg">Find your bliz moment →</button>
+      <button class="gbtn gbtn--lg">Get your risk-free trial kit →</button>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="hl-footer">
     <p class="hl-footer__one">A fresh moment, every day — <span class="ac">bliz.</span></p>
-    <button class="gbtn gbtn--blue">Start your trial</button>
+    <button class="gbtn">Start your trial</button>
     <div class="hl-footer__cols"><span>Product</span><span>Ritual</span><span>Science</span><span>FAQ</span><span>Company</span></div>
     <p class="hl-footer__disc">bliz is a General Wellness product. It is not a medical device and is not intended to diagnose, treat, cure, or prevent any disease.</p>
   </footer>
@@ -171,15 +246,249 @@
 </div>
 <script>
 (function(){
+ /* compare.html 시뮬레이션용: ?safe=59 → 다이내믹 아일랜드 safe-area 재현 */
+ var safe=new URLSearchParams(location.search).get('safe');
+ if(safe) document.documentElement.style.setProperty('--sat', parseInt(safe,10)+'px');
  var sel='.hl-h2,.hl-sub,.hl-stake,.hl-vcard,.hl-mb,.hl-bigcard,.hl-step,.hl-tcard,.hl-pcard,.hl-explain,.hl-scent,.hl-cmp,.hl-pchips,.hl-trial,.hl-lead__form';
- var els=[].slice.call(document.querySelectorAll(sel));
+ var els=[].slice.call(document.querySelectorAll(sel)).filter(function(e){return !e.closest('#s5a') && !e.closest('#bscene')});
  els.forEach(function(e,i){e.classList.add('sp-reveal');e.style.transitionDelay=((i%3)*0.07)+'s'});
- if(!('IntersectionObserver'in window)){els.forEach(function(e){e.classList.add('sp-in')});return;}
- var io=new IntersectionObserver(function(ents){ents.forEach(function(en){if(en.isIntersecting){en.target.classList.add('sp-in');io.unobserve(en.target)}})},{threshold:.12,rootMargin:'0px 0px -7% 0px'});
- els.forEach(function(e){io.observe(e)});
+ /* IO 대신 스크롤 계산 (스케일된 iframe에서도 동작) */
+ function checkReveals(){
+   var vh=window.innerHeight;
+   for(var i=els.length-1;i>=0;i--){
+     var e=els[i];
+     if(e.getBoundingClientRect().top < vh*0.93){ e.classList.add('sp-in'); els.splice(i,1); }
+   }
+ }
+ /* 스크롤 핸들러 rAF 배치: 프레임당 1회만 실행(레이아웃 스래싱 방지) */
+ var rafScrollFns=[], rafPending=false;
+ function rafScroll(){ if(rafPending) return; rafPending=true; requestAnimationFrame(function(){ rafPending=false; for(var i=0;i<rafScrollFns.length;i++) rafScrollFns[i](); }); }
+ window.addEventListener('scroll',rafScroll,{passive:true});
+ checkReveals(); rafScrollFns.push(checkReveals);
  var nav=document.getElementById('nav');
  function navState(){ if(nav) nav.classList.toggle('is-scrolled', window.scrollY > window.innerHeight*0.82); }
- navState(); window.addEventListener('scroll',navState,{passive:true});
+ navState(); rafScrollFns.push(navState);
+ /* navbar 숨김/등장 규칙 */
+ var hotzone=document.getElementById('hotzone'), lastY=window.scrollY, hideTimer=null;
+ var heroEl=document.querySelector('.hero-v'), mfcta=document.getElementById('mfcta');
+ /* 모바일 첫 화면(히어로)에서는 navbar 노출 안 함 — 히어로를 벗어나야 등장 */
+ function inMobileHero(){ return window.innerWidth<=768 && heroEl && window.scrollY < heroEl.offsetHeight-4; }
+ function atTop(){ return window.scrollY < 10; }
+ function menuOpen(){ return nav.classList.contains('is-open'); }
+ /* 하단 플로팅 CTA바 = navbar와 독립. 첫 화면(히어로)에서는 숨김, 벗어나면 스크롤 방향과 무관하게 항상 노출 */
+ function setNavHidden(hidden){ nav.classList.toggle('nav-hidden',hidden); }
+ function setCtaHidden(hidden){ if(mfcta) mfcta.classList.toggle('mfcta-hidden',hidden); }
+ function armTimer(){ clearTimeout(hideTimer); if(!atTop() && !menuOpen()) hideTimer=setTimeout(hideNav,3000); }
+ function showNav(){ if(inMobileHero()) return; setNavHidden(false); hotzone.classList.remove('armed'); armTimer(); }
+ function hideNav(){ if(atTop()||menuOpen()) return; clearTimeout(hideTimer); setNavHidden(true); hotzone.classList.add('armed'); }
+ if(inMobileHero()) setNavHidden(true);
+ setCtaHidden(inMobileHero());
+ rafScrollFns.push(function(){
+   var y=window.scrollY;
+   setCtaHidden(inMobileHero()); /* cta: 히어로 여부에만 반응, 스크롤 방향 무관 */
+   if(inMobileHero()){ clearTimeout(hideTimer); setNavHidden(true); hotzone.classList.remove('armed'); lastY=y; return; }
+   if(atTop()){ clearTimeout(hideTimer); setNavHidden(false); hotzone.classList.remove('armed'); }
+   else if(y<lastY-2){ showNav(); }
+   else if(y>lastY+2){ hideNav(); }
+   lastY=y;
+ });
+ ['mouseenter','click','touchstart'].forEach(function(ev){ hotzone.addEventListener(ev,showNav,{passive:true}); });
+ /* ANATOMY 인터랙션 (haler.co 포팅) */
+ var anatomyData=[
+  {id:'nasal',title:'Nasal Cavity',desc:'Where every breath begins.\nThe first surface your mist touches — warming, filtering, and setting the tone for everything that follows.',pos:{top:'calc(31% + 16px)',left:'calc(65% + 12px)'}},
+  {id:'sinuses',title:'Sinuses',desc:'The hidden spaces behind your nose. Connected to your nasal cavity, these areas benefit from the moisture that starts at the surface.',pos:{top:'calc(36% + 16px)',left:'calc(57.7% + 12px)'}},
+  {id:'pharynx',title:'Pharynx',desc:'The crossroads of your airway. Where air, comfort, and daily vocal demand all meet. One of the most overlooked spots to keep hydrated.',pos:{top:'calc(47% + 16px)',left:'calc(53% + 12px)'}},
+  {id:'larynx',title:'Larynx',desc:'Where your voice lives. The lowest point of your upper airway — and the one voice professionals feel first when the air around them is dry.',pos:{top:'calc(60% + 16px)',left:'calc(56% + 12px)'}}
+ ];
+ var anatEl={t:document.getElementById('anat-title'),d:document.getElementById('anat-desc'),dots:document.getElementById('anat-dots'),pts:document.getElementById('anat-points')};
+ if(anatEl.t){
+  var anatIdx=0;
+  anatomyData.forEach(function(item,i){
+    var dot=document.createElement('span'); dot.addEventListener('click',function(){setAnat(i)}); anatEl.dots.appendChild(dot);
+    var btn=document.createElement('button'); btn.style.top=item.pos.top; btn.style.left=item.pos.left; btn.setAttribute('aria-label',item.title);
+    btn.addEventListener('click',function(){setAnat(i)}); anatEl.pts.appendChild(btn);
+  });
+  function setAnat(i){
+    anatIdx=i; var item=anatomyData[i];
+    anatEl.t.style.opacity=0; anatEl.d.style.opacity=0;
+    setTimeout(function(){
+      anatEl.t.textContent=item.title;
+      var parts=item.desc.split('\n');
+      anatEl.d.innerHTML = parts.length>1 ? '<b>'+parts[0]+'</b>\n'+parts.slice(1).join('\n') : item.desc.replace(/^([^.]+\.)/,'<b>$1</b>');
+      anatEl.t.style.opacity=1; anatEl.d.style.opacity=1;
+    },180);
+    [].forEach.call(anatEl.dots.children,function(el,j){el.classList.toggle('on',j===i)});
+    [].forEach.call(anatEl.pts.children,function(el,j){el.classList.toggle('on',j===i)});
+  }
+  setAnat(0);
+  /* 스와이프로 부위 전환 (원본 onPanEnd 임계값 50px 동일) */
+  var anatBlock=document.getElementById('anatomy'), swipeX=null, swipeY=null;
+  anatBlock.addEventListener('pointerdown',function(e){ swipeX=e.clientX; swipeY=e.clientY; },{passive:true});
+  anatBlock.addEventListener('pointerup',function(e){
+    if(swipeX===null) return;
+    var dx=e.clientX-swipeX, dy=e.clientY-swipeY;
+    swipeX=null;
+    if(Math.abs(dx)<50||Math.abs(dx)<Math.abs(dy)) return;
+    if(dx<0) setAnat((anatIdx+1)%anatomyData.length);
+    else setAnat((anatIdx-1+anatomyData.length)%anatomyData.length);
+  },{passive:true});
+  anatBlock.addEventListener('pointercancel',function(){ swipeX=null; },{passive:true});
+ }
+ nav.addEventListener('mouseenter',function(){ clearTimeout(hideTimer); });
+ nav.addEventListener('mouseleave',armTimer);
+ /* 브릿지 텍스트 스크럽 */
+ var bridge=document.getElementById('bridge');
+ if(bridge){
+   bridge.classList.remove('sp-reveal','sp-in'); bridge.style.transitionDelay='';
+   [].slice.call(bridge.childNodes).forEach(function(node){
+     if(node.nodeType===3){
+       var frag=document.createDocumentFragment();
+       node.textContent.split(/(\s+)/).forEach(function(tk){
+         if(/^\s+$/.test(tk)||tk===''){frag.appendChild(document.createTextNode(tk));return;}
+         var s=document.createElement('span'); s.className='bw'; s.textContent=tk; frag.appendChild(s);
+       });
+       bridge.replaceChild(frag,node);
+     } else if(node.nodeType===1 && node.classList.contains('ac')){
+       var words=node.textContent.split(/(\s+)/); node.textContent='';
+       words.forEach(function(tk){
+         if(/^\s+$/.test(tk)||tk===''){node.appendChild(document.createTextNode(tk));return;}
+         var s=document.createElement('span'); s.className='bw bw-grad'; s.textContent=tk; node.appendChild(s);
+       });
+     }
+   });
+   var bws=bridge.querySelectorAll('.bw');
+   var scene=document.getElementById('bscene'), veil=document.getElementById('bveil'), bvideo=veil.querySelector('video');
+   function clamp01(x){return Math.max(0,Math.min(1,x));}
+   function ease(x){return x*x*(3-2*x);} /* smoothstep */
+   function bridgeScrub(){
+     var isDesk=window.innerWidth>768;
+     if(!isDesk){ /* mobile: 시네마틱 없음 — 문장 항상 완성 */
+       veil.style.opacity=0;
+       for(var k=0;k<bws.length;k++){ bws[k].classList.add('lit'); bws[k].style.opacity=1; }
+       bridge.style.filter=''; bridge.style.opacity=1;
+       return;
+     }
+     var r=scene.getBoundingClientRect(), vh=window.innerHeight;
+     /* 씬이 뷰포트에서 벗어나면 무거운 계산 스킵 */
+     if(r.bottom<-50 || r.top>vh+50){ if(!bvideo.paused) bvideo.pause(); return; }
+     var total=r.height-vh;
+     var p=clamp01(-r.top/total);
+     /* 페이즈 (씬 200vh): 베일인 0-0.15 | 문장 0.10-0.30 | 점등 0.20-0.80. 끝까지 유지(페이드아웃 없음) → 다음 섹션으로 자연 스크롤 */
+     var vin=ease(clamp01(p/0.15));
+     veil.style.opacity=vin.toFixed(3);
+     veil.style.filter=''; veil.style.transform='';
+     var tin=ease(clamp01((p-0.10)/0.16));
+     bridge.style.transform='translate(-50%,-50%)';
+     bridge.style.filter='blur('+((1-tin)*14)+'px)';
+     bridge.style.opacity=tin.toFixed(3);
+     var sp=clamp01((p-0.20)/0.60), n=bws.length;
+     for(var i=0;i<n;i++){
+       bws[i].classList.toggle('lit', sp*n>=i+0.5);
+       if(!bws[i].classList.contains('bw-grad')) bws[i].style.opacity=1;
+     }
+     /* 씬이 화면에 조금이라도 걸쳐 있으면 계속 재생 (완전히 오프스크린이면 위 early-out에서 일시정지) */
+     if(bvideo.paused) bvideo.play().catch(function(){});
+   }
+   bridgeScrub();
+   rafScrollFns.push(bridgeScrub);
+   window.addEventListener('resize',bridgeScrub);
+   window.addEventListener('load',bridgeScrub);
+ }
+ /* 6 micrometer magic → xem — 핀 고정 시네마틱 3단계:
+    ① 섹션이 화면에 딱 고정되면 대제목 → 소제목(+버튼) 순차 베일인. 이 구간(p 0~0.15) 동안은 축소가 시작되지 않음 → 베일인이 끝나야 다음 진행.
+    ② 물방울 88% → 25% 축소(시작부터 88%라 배경 그라데이션과 처음부터 어우러짐). 궤도는 물방울이 70% 크기로 줄면서부터 서서히 등장, 영상과 같은 배율로 함께 축소.
+    ③ 축소가 ~10% 진행되면 첫 텍스트가 스크롤 따라 위로 빠지고, xem 텍스트가 아래에서 떠오름.
+    모바일: 핀 없이 통과 스크럽(베일인은 즉시 완성 — 브릿지 씬과 동일한 방침) */
+ var magicScene=document.getElementById('magicScene'), magicSticky=document.querySelector('.hl-sec-magic-sticky'),
+     magicBg=document.getElementById('magicBg'), magicOrbitWrap=document.getElementById('magicOrbitWrap'),
+     magicLabel=document.getElementById('magicLabel'),
+     magicIn1=document.getElementById('magicIn1'), magicIn2=document.getElementById('magicIn2');
+ if(magicScene && magicBg && magicIn1 && magicIn2){
+   var m1h=magicIn1.querySelector('.hl-h2'), m1s=magicIn1.querySelector('.hl-sub'), m1c=magicIn1.querySelector('.hl-cta');
+   var m2h=magicIn2.querySelector('.hl-h2'), m2s=magicIn2.querySelector('.hl-sub');
+   /* 공용 스크롤 리빌(sp-reveal)과 충돌 방지 — 이 씬의 텍스트는 전부 스크럽이 직접 제어 */
+   [m1h,m1s,m2h,m2s].forEach(function(el){ if(el){ el.classList.remove('sp-reveal','sp-in'); el.style.transitionDelay=''; } });
+   function mc01(x){return Math.max(0,Math.min(1,x));}
+   function mss(x){return x*x*(3-2*x);}
+   var MAGIC_VEIL=0.15; /* 핀 구간 앞 15%는 베일인 전용 */
+   function magicScrub(){
+     var vh=window.innerHeight, p, desk=window.innerWidth>768;
+     if(desk){
+       var r=magicScene.getBoundingClientRect();
+       if(r.bottom<-50 || r.top>vh+50) return; /* 화면 밖이면 스킵 */
+       var total=r.height-vh;
+       p=total>0 ? mc01(-r.top/total) : 0; /* 0=고정 시작, 1=고정 구간 끝 */
+     } else {
+       var r2=magicSticky.getBoundingClientRect();
+       p=mc01((vh-r2.top)/(vh+r2.height)); /* 0=진입 시작, 1=완전히 지나감 */
+     }
+     /* ① 베일인 — 대제목 먼저, 소제목·버튼이 반박자 뒤에 */
+     var tT=desk? mss(mc01(p/0.08)) : 1;
+     var tS=desk? mss(mc01((p-0.05)/0.09)) : 1;
+     m1h.style.filter='blur('+((1-tT)*14).toFixed(1)+'px)'; m1h.style.opacity=tT.toFixed(3);
+     m1s.style.filter='blur('+((1-tS)*14).toFixed(1)+'px)'; m1s.style.opacity=tS.toFixed(3);
+     if(m1c){ m1c.style.filter=m1s.style.filter; m1c.style.opacity=tS.toFixed(3); }
+     /* ② 축소 — 베일인이 끝난 뒤부터 진행 */
+     var pS=desk? mc01((p-MAGIC_VEIL)/(1-MAGIC_VEIL)) : p;
+     var scale=0.88-pS*0.63; /* 시작 88% → 최종 25% */
+     magicBg.style.transform='scale('+scale.toFixed(3)+')';
+     if(magicOrbitWrap){
+       var ot=mss(mc01((0.7-scale)/0.3)); /* 궤도: 물방울이 70% "크기"가 되면서부터 등장 */
+       magicOrbitWrap.style.opacity=ot.toFixed(3);
+       magicOrbitWrap.style.transform='scale('+scale.toFixed(3)+')'; /* 영상과 같은 배율로 함께 축소 */
+       if(magicLabel){ var ol=mss(mc01((0.45-scale)/0.15)); magicLabel.style.opacity=ol.toFixed(3); } /* xem.은 궤도보다 늦게 — 45% 크기부터 등장 */
+     }
+     /* ③ 텍스트 교대 — 첫 텍스트는 축소 30% 지점까지 머물다가 제자리에서 베일 아웃, xem 텍스트는 물방울이 거의 다 작아진 뒤에야 상승 */
+     var ex=mss(mc01((pS-0.30)/0.30));
+     magicIn1.style.filter='blur('+(ex*14).toFixed(1)+'px)';
+     magicIn1.style.opacity=(1-ex).toFixed(3);
+     magicIn1.style.pointerEvents = ex>0.5 ? 'none' : 'auto';
+     var en=mss(mc01((pS-0.78)/0.20));
+     magicIn2.style.transform='translateY('+(((1-en)*58).toFixed(2))+'vh)';
+     magicIn2.style.opacity=en.toFixed(3);
+     magicIn2.style.pointerEvents = en>0.5 ? 'auto' : 'none';
+   }
+   magicScrub();
+   rafScrollFns.push(magicScrub);
+   window.addEventListener('resize',magicScrub);
+ }
+ var burger=document.getElementById('burger'), mpanel=document.getElementById('mpanel'), mbackdrop=document.getElementById('mbackdrop');
+ function setMenu(open){ nav.classList.toggle('is-open',open); mpanel.classList.toggle('open',open); mbackdrop.classList.toggle('open',open); if(open){clearTimeout(hideTimer);setNavHidden(false);setCtaHidden(false);hotzone.classList.remove('armed');} else armTimer(); }
+ if(burger){
+   burger.addEventListener('click',function(e){e.stopPropagation();setMenu(!nav.classList.contains('is-open'));});
+   mbackdrop.addEventListener('click',function(){setMenu(false);});
+   document.addEventListener('click',function(e){ if(nav.classList.contains('is-open') && !nav.contains(e.target) && !mpanel.contains(e.target)) setMenu(false); });
+ }
+})();
+</script>
+<script>
+/* 해부 블록 하단 반원: border-bottom-radius = 블록 너비/2 (반응형) */
+(function(){
+ var anat=document.getElementById('anatomy');
+ if(!anat) return;
+ var card=anat.querySelector('.hl-anatomy__card');
+ function setArc(){
+   var r=Math.round(anat.offsetWidth/2)+'px';
+   anat.style.borderBottomLeftRadius=r; anat.style.borderBottomRightRadius=r;
+   /* 카드 하단 좌우 라운드 = 바깥 하늘색 블록 라운드값과 동일 */
+   if(card){ card.style.borderBottomLeftRadius=r; card.style.borderBottomRightRadius=r; }
+ }
+ setArc();
+ window.addEventListener('resize',setArc,{passive:true});
+ window.addEventListener('load',setArc);
+})();
+</script>
+<script>
+/* dev live-reload: index.html 변경 감지 → 자동 새로고침 (로컬에서만 동작) */
+(function(){
+ if(location.hostname!=='127.0.0.1' && location.hostname!=='localhost') return;
+ var cur=null;
+ setInterval(function(){
+   fetch('/index.html',{cache:'no-store'}).then(function(r){return r.text()}).then(function(t){
+     if(cur===null){cur=t;return;}
+     if(t!==cur) location.reload();
+   }).catch(function(){});
+ },1500);
 })();
 </script>
 </body></html>

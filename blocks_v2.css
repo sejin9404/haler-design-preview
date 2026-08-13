@@ -18,6 +18,12 @@
   --blk-point:linear-gradient(150deg,#1E97FF,#0A5FE0);
 }
 *{box-sizing:border-box}
+/* 애플식 연속 곡선(스쿼클) — 지원 브라우저에서 라운드 사각 요소 전체 적용 (필/원형 제외) */
+@supports (corner-shape:squircle){
+  .hero-v,.hero-v__bg,.hero-v__bg video,.hl-block,.hl-vcard,.hl-vcard__ic,.hl-mb,.hl-mb__media,.hl-mb__ic,
+  .hl-bigcard,.hl-bigcard__media,.hl-tcard,.hl-pcard,.hl-step,.hl-stake__ic,.hl-ph,.hl-scent,
+  .mnav-panel,.hl-nav__drop{corner-shape:squircle}
+}
 body{margin:0;background:var(--page);color:var(--ink);font-family:var(--fb);font-weight:300;line-height:1.6;text-align:center;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .hl-page{max-width:1200px;margin:0 auto;padding:0 28px 30px}
 img{max-width:100%}
@@ -27,24 +33,40 @@ img{max-width:100%}
 .hl-h1{font-family:var(--fd);font-weight:500;font-size:56px;line-height:1.03;letter-spacing:-0.035em;color:var(--ink);margin:0 0 18px}
 .hl-h2{font-family:var(--fd);font-weight:500;font-size:40px;line-height:1.08;letter-spacing:-0.03em;color:var(--ink);margin:0 0 12px}
 .hl-h1 .ac,.hl-h2 .ac{background:linear-gradient(118deg,#00B7FF,#0062FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* 부정·경고 뉘앙스 웜 그라데이션 (분홍→다홍오렌지) */
+.hl-h1 .ac-warm,.hl-h2 .ac-warm{background:linear-gradient(118deg,#FF9E3D,#FF6545);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hl-sub{font-size:18px;color:var(--ink2);max-width:560px;margin:0 auto 26px;line-height:1.6}
 /* 아이콘 통일 (Glazicons풍 라인) */
 .hl-stake__ic svg,.hl-vcard__ic svg,.hl-mb__ic svg{stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
 
-/* 버튼 (그림자0·그라데0·테두리 최소) */
-.gbtn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:14px 30px;font-family:var(--fd);font-weight:500;font-size:15px;border:none;cursor:pointer;transition:all .22s ease;text-decoration:none}
-.gbtn--blue{background:var(--blue);color:#fff}
-.gbtn--blue:hover{background:#0A6FE0}
-.gbtn--ghost{background:rgba(0,132,255,.07);color:var(--deep2)}
-.gbtn--ghost:hover{background:rgba(0,132,255,.13)}
-.gbtn--text{background:none;color:var(--deep2);padding:14px 6px}
-.gbtn--lg{padding:16px 34px;font-size:16px}
-.gbtn--sm{padding:10px 18px;font-size:13px}
-.gbtn--clear{-webkit-backdrop-filter:blur(7px) saturate(1.2);backdrop-filter:blur(7px) saturate(1.2);background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.45);color:#fff}
-.gbtn--frost{-webkit-backdrop-filter:blur(16px) saturate(1.3) brightness(1.05);backdrop-filter:blur(16px) saturate(1.3) brightness(1.05);background:rgba(255,255,255,.12);color:#fff}
-
+/* 버튼 — Liquid Film Button (Claude Design 원본 동기화). 베벨·스페큘러 없이 색·투명도만으로 존재감 */
+.gbtn{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  border:none;cursor:pointer;border-radius:999px;font-family:var(--fd);font-weight:500;font-size:15px;
+  color:#fff;text-shadow:0 1px 2px rgba(0,70,150,.22);text-decoration:none;padding:14px 30px;
+  background:linear-gradient(132deg,rgba(20,140,250,.86) 0%,rgba(52,172,255,.80) 46%,rgba(126,214,255,.74) 100%);
+  -webkit-backdrop-filter:blur(7px) saturate(1.5);backdrop-filter:blur(7px) saturate(1.5);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.55),0 12px 34px rgba(0,140,255,.24);
+  transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease,filter .3s ease}
+.gbtn:hover{transform:translateY(-2px);filter:saturate(1.06) brightness(1.03);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.70),0 18px 44px rgba(0,140,255,.30)}
+.gbtn:active{transform:scale(.976);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.45),0 6px 18px rgba(0,140,255,.20)}
+.gbtn svg{stroke:currentColor;fill:none;stroke-linecap:round;stroke-linejoin:round}
+/* 사이즈 */
+.gbtn--xl{padding:22px 52px;font-size:18px}
+.gbtn--lg{padding:18px 40px;font-size:16px}
+.gbtn--md{padding:14px 30px;font-size:14.5px}
+.gbtn--sm{padding:10px 21px;font-size:13px}
+.gbtn--icon{width:200px;height:104px;padding:0}
+/* 변형 */
+.gbtn--cyan{background:linear-gradient(132deg,rgba(126,214,255,.78) 0%,rgba(52,172,255,.80) 54%,rgba(20,140,250,.84) 100%)}
+.gbtn--pale{color:#0B4E92;text-shadow:none;
+  background:linear-gradient(132deg,rgba(150,216,255,.62) 0%,rgba(186,231,255,.58) 50%,rgba(214,243,255,.55) 100%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.80),0 12px 32px rgba(0,140,255,.18)}
+.gbtn--pale:hover{box-shadow:inset 0 0 0 1px rgba(255,255,255,.95),0 18px 42px rgba(0,140,255,.24)}
+.gbtn--deep{background:linear-gradient(132deg,rgba(6,110,225,.88) 0%,rgba(30,150,250,.82) 48%,rgba(96,198,255,.76) 100%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.62),0 12px 34px rgba(0,80,175,.34)}
 /* 칩 */
-.hl-chip{display:inline-block;color:var(--deep2);border-radius:999px;padding:8px 15px;font-family:var(--fd);font-weight:500;font-size:13px;background:rgba(0,132,255,.07)}
 .hl-chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:0 0 22px}
 
 /* 미디어 플레이스홀더 */
@@ -55,6 +77,13 @@ img{max-width:100%}
    ============================================================ */
 .hl-sec{padding:96px 16px}
 .hl-sec--tight{padding:72px 16px}
+.hl-sec--hook{padding:220px 16px}
+/* 캐러셀 섹션 — 검정~곤색~파랑 확산 그라데이션, 처음부터 자연스럽게 밝은 배경으로 복귀 */
+.hl-sec--carousel{position:relative;isolation:isolate}
+.hl-sec--carousel::before{content:"";position:absolute;top:0;bottom:0;left:calc(50% - 50vw);width:100vw;z-index:-1;pointer-events:none;
+  background:linear-gradient(160deg,#04060C 0%,#0A1330 40%,#0E1F45 70%,#0E1F45 100%);
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 100%);
+  mask-image:linear-gradient(180deg,#000 0%,transparent 100%)}
 
 /* 의미있는 블록 컨테이너 (테두리 0) */
 .hl-block{position:relative;border-radius:36px;margin:20px 0;overflow:hidden;border:none}
@@ -67,20 +96,56 @@ img{max-width:100%}
 .hl-block--lead .hl-lead__input{background:#fff}
 
 /* 1. 히어로 — 천장 부착 풀 비디오 블록 (윗면 천장, 아래만 둥글게, 글래스카드 X) */
-.hero-v{position:relative;margin:0 0 20px;border-radius:0 0 36px 36px;overflow:hidden;min-height:90vh;display:flex;align-items:flex-end}
-.hero-v__bg{position:absolute;inset:0;border-radius:0 0 36px 36px;overflow:hidden}
-.hero-v__bg video{width:100%;height:100%;object-fit:cover;display:block;border-radius:0 0 36px 36px}
-.hero-v::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:0 0 36px 36px;background:linear-gradient(180deg,rgba(8,18,38,.30),transparent 24%,transparent 48%,rgba(8,18,38,.55))}
+.hero-v{position:relative;margin:0;border-radius:0;overflow:hidden;min-height:100vh;display:flex;align-items:flex-end}
+.hero-v__bg{position:absolute;inset:0;overflow:hidden}
+.hero-v__bg video{width:100%;height:100%;object-fit:cover;display:block}
+.hero-v::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(8,18,38,.30),transparent 24%,transparent 48%,rgba(8,18,38,.55))}
 .hero-v__in{position:relative;z-index:2;width:100%;padding:0 clamp(24px,4vw,52px) clamp(46px,7vw,80px);text-align:center}
 .hero-v__box{max-width:780px;margin:0 auto}
 .hero-v__box .hl-h1{color:#fff;font-size:clamp(40px,6vw,66px);margin:0 0 16px}
 .hero-v__box .hl-h1 .ac{background:none;-webkit-text-fill-color:#bfe6ff;color:#bfe6ff}
+.hero-h1-mobile{display:none}
 .hero-v__sub{color:rgba(255,255,255,.92);font-size:clamp(15px,1.5vw,18px);line-height:1.55;max-width:780px;margin:0 auto 26px}
 .hero-v__cta{display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:center}
-.gbtn--hero{padding:15px 32px;-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);color:#fff}
-.gbtn--hero:hover{background:rgba(255,255,255,.28)}
 .hero-v__link{color:#fff;font-family:var(--fd);font-weight:500;font-size:15px;text-decoration:none;opacity:.92}
 .hero-v__link:hover{opacity:1}
+
+/* 1b. 6 micrometer magic → xem — 스크롤 고정(sticky) 시네마틱: 베일인 → 물방울 축소 → 텍스트 교대.
+   배경은 영상 자체 배경색(#FAFAFA)과 맞추고 위아래는 페이지 톤으로 그라데이션 — 처음부터 경계가 안 보이게 */
+.hl-sec-magic-scene{height:300vh;position:relative}
+.hl-sec-magic-sticky{position:sticky;top:0;height:100vh;width:100vw;margin-left:calc(50% - 50vw);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+  background:linear-gradient(180deg,var(--page) 0%,#FAFAFA 15%,#FAFAFA 85%,var(--page) 100%)}
+.hl-sec-magic__bg{position:absolute;inset:0;overflow:hidden;will-change:transform}
+.hl-sec-magic__bg video{width:100%;height:100%;object-fit:cover;display:block}
+/* 궤도 오버레이 — 영상 박스(#magicBg) "밖"의 형제 요소라 박스 축소에 잘리지 않고, JS가 영상과 같은 배율로 함께 축소.
+   태양(물방울)-지구(원 3개) 비유: 궤도 반지름이 물방울보다 훨씬 큼. 물방울이 70% 크기로 줄면서부터 서서히 등장 */
+.hl-sec-magic__orbitwrap{--orbit-r:780px;position:absolute;left:50%;top:50%;width:0;height:0;z-index:2;pointer-events:none;
+  opacity:0;will-change:transform,opacity}
+/* 궤도 자취 — 원 3개가 도는 경로를 흐릿한 원 테두리로 표시 */
+.hl-sec-magic__ring{position:absolute;left:calc(var(--orbit-r)*-1);top:calc(var(--orbit-r)*-1);
+  width:calc(var(--orbit-r)*2);height:calc(var(--orbit-r)*2);border-radius:50%;
+  border:1.5px solid rgba(0,140,255,.18)}
+.hl-sec-magic__orbit{position:absolute;left:0;top:0;width:0;height:0;
+  animation:hl-orbit-spin 22s linear infinite}
+.hl-sec-magic__orb{position:absolute;top:0;left:0;width:260px;height:260px;margin:-130px;border-radius:50%;
+  background:rgba(255,255,255,.92);box-shadow:0 0 20px rgba(0,140,255,.55),0 0 5px rgba(255,255,255,.9)}
+.hl-sec-magic__orb--1{transform:rotate(0deg) translateX(var(--orbit-r))}
+.hl-sec-magic__orb--2{transform:rotate(120deg) translateX(var(--orbit-r))}
+.hl-sec-magic__orb--3{transform:rotate(240deg) translateX(var(--orbit-r))}
+@keyframes hl-orbit-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.hl-sec-magic__orbit{animation:none}}
+/* 물방울 중앙의 xem. 레이블 — 궤도와 함께 서서히 등장(크기는 고정, 가독성 우선) */
+.hl-sec-magic__label{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;opacity:0;pointer-events:none;
+  font-family:var(--fd);font-weight:500;font-size:clamp(30px,3.2vw,46px);letter-spacing:-0.02em;
+  background:linear-gradient(118deg,#00B7FF,#0062FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* 두 텍스트 블록 — 풀사이즈 오버레이로 겹쳐 두고 JS가 교대시킴(① 6 micrometer → ② xem) */
+.hl-sec-magic__in{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:0 24px;will-change:transform,opacity}
+.hl-sec-magic__in>*{max-width:min(720px,88vw)}
+/* xem 블록 — 히어로(Hydrate. Breathe.)처럼 화면 하단부에 안착 */
+.hl-sec-magic__in--b{opacity:0;transform:translateY(58vh);pointer-events:none;
+  justify-content:flex-end;padding-bottom:clamp(18px,3.5vh,40px)}
 
 /* 2. 위기 (플레인) */
 .hl-stakes{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;margin-top:30px}
@@ -88,6 +153,37 @@ img{max-width:100%}
 .hl-stake__ic{width:54px;height:54px;border-radius:16px;background:rgba(0,132,255,.08);display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
 .hl-stake__ic svg{width:24px;height:24px;stroke:var(--blue);fill:none;stroke-width:1.6}
 .hl-stake p{font-family:var(--fd);font-weight:500;font-size:15px;color:var(--ink);margin:0}
+
+/* 2b. 무한 슬라이드 캐러셀(실사 이미지+캡션) — 데스크탑: 기존 1줄(3:4, 그림자) 그대로. 모바일 전용 2줄·정사각형·그림자없음은 반응형 블록에서 오버라이드 */
+.hl-marquee{width:100vw;margin:34px calc(50% - 50vw) 14px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.hl-marquee__track{display:flex;align-items:flex-start;gap:18px;width:max-content;animation:marquee 38s linear infinite}
+.hl-marquee__track--b{display:none}
+.hl-marquee:hover .hl-marquee__track{animation-play-state:paused}
+.hl-mcard{position:relative;flex:0 0 auto;width:clamp(220px,80vw,350px);aspect-ratio:3/4;border-radius:26px;overflow:hidden;
+  background:linear-gradient(160deg,#E4F0FD,#BFDBFE);box-shadow:0 16px 36px rgba(15,32,56,.14)}
+/* 하단 블러 그라데이션 — backdrop-filter+mask 조합은 이 프리뷰 엔진에서 경계가 뚝 끊겨 보여(알파를 부드럽게 안 섞음),
+   대신 같은 이미지를 블러 강도만 다르게 3장 겹쳐쌓고 각각 다른 지점부터 서서히 나타나게 함(mask는 필터가 아닌 이미지 자체에 적용 → 훨씬 안정적으로 부드럽게 섞임) */
+.hl-mcard__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.hl-mcard__img--b1{filter:blur(4px);
+  -webkit-mask-image:linear-gradient(180deg,transparent 30%,#000 62%);
+  mask-image:linear-gradient(180deg,transparent 30%,#000 62%)}
+.hl-mcard__img--b2{filter:blur(11px);
+  -webkit-mask-image:linear-gradient(180deg,transparent 45%,#000 76%);
+  mask-image:linear-gradient(180deg,transparent 45%,#000 76%)}
+.hl-mcard__img--b3{filter:blur(22px);
+  -webkit-mask-image:linear-gradient(180deg,transparent 60%,#000 90%);
+  mask-image:linear-gradient(180deg,transparent 60%,#000 90%)}
+.hl-mcard__tone{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,transparent 34%,rgba(0,0,0,.55) 68%,rgba(0,0,0,.8))}
+.hl-mcard__label{position:absolute;left:16px;right:16px;bottom:14px;color:#fff;font-family:var(--fd);font-weight:600;
+  font-size:18px;line-height:1.22;text-align:center;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  text-shadow:0 1px 4px rgba(0,0,0,.4)}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@supports (corner-shape:squircle){.hl-mcard{corner-shape:squircle}}
+@media (prefers-reduced-motion:reduce){.hl-marquee__track{animation:none}}
 
 /* 3. 가치3 (카드만, 테두리0 옅은 채움) */
 .hl-value3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
@@ -117,17 +213,54 @@ img{max-width:100%}
 .hl-bigcard__media{flex:1;border-radius:20px;background:rgba(0,132,255,.06);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;min-height:180px;margin-bottom:20px}
 .hl-bigcard .gbtn{align-self:flex-start}
 
+/* 3b. ANATOMY — haler.co 포팅 (블루 그라데이션 블록 + 글래스 카드 + 해부도 포인트) */
+.hl-anatomy-sec{padding:24px 0 64px}
+.hl-anatomy{position:relative;width:100%;margin:0 auto;border-radius:36px;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;padding:48px 0 0}
+/* 하단 반원: JS가 border-bottom-*-radius = 너비/2 로 설정 (아래쪽이 반지름=너비/2인 반원) */
+/* 배경 = 기존 airy 블록을 상하 반전 + 위 투명 → 아래 불투명 알파 그라데이션 */
+.hl-anatomy::before{content:"";position:absolute;inset:0;z-index:0;
+  background:linear-gradient(180deg,#D0EBFF,#7FC5FF);
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000);mask-image:linear-gradient(180deg,transparent,#000)}
+.hl-anatomy__head{position:relative;z-index:10;padding:0 40px}
+.hl-anatomy__head .hl-sub{margin-bottom:0}
+.hl-anatomy__cardwrap{width:100%;max-width:840px;padding:0 32px;z-index:5;margin-top:174px;position:relative}
+.hl-anatomy__card{background:linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,.6));
+  -webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.2);border-radius:32px;padding:24px 24px 290px;text-align:left}
+@supports (corner-shape:squircle){.hl-anatomy__card{corner-shape:squircle}}
+.hl-anatomy__row{display:flex;align-items:center;justify-content:space-between}
+.hl-anatomy__spot{font-family:var(--fd);font-weight:500;font-size:40px;margin:0;transition:opacity .3s;
+  background:linear-gradient(118deg,#00B7FF,#0062FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hl-anatomy__dots{display:flex;gap:6px}
+.hl-anatomy__dots span{height:6px;width:6px;border-radius:999px;background:#BFDBFE;transition:all .5s;cursor:pointer}
+.hl-anatomy__dots span.on{width:20px;background:#3B82F6}
+.hl-anatomy__desc{margin:20px 0 0;font-size:17.5px;line-height:1.45;color:#1F2937;font-weight:300;min-height:100px;transition:opacity .3s;text-align:left;white-space:pre-line}
+.hl-anatomy__desc b{font-weight:500}
+.hl-anatomy__figure{position:relative;margin-top:-260px;width:162%;max-width:720px;z-index:6}
+/* 블록 하단 → U넥 중간까지 하늘빛 페이드 (사진 위 오버레이, 위로 갈수록 투명) */
+.hl-anatomy::after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;z-index:7;pointer-events:none;
+  background:linear-gradient(to top,rgba(127,197,255,1) 0%,rgba(150,208,255,.7) 45%,rgba(180,220,255,0) 100%)}
+.hl-anatomy__figure img{width:100%;height:auto;display:block;filter:drop-shadow(0 10px 40px rgba(0,149,255,.25))}
+.hl-anatomy__points button{position:absolute;width:38px;height:38px;transform:translate(-50%,-50%);border:none;background:transparent;padding:0;cursor:pointer}
+.hl-anatomy__points button::before{content:"";position:absolute;inset:8px;border-radius:50%;
+  background:radial-gradient(circle,#fff 0%,rgba(255,255,255,.4) 100%);opacity:.35;transition:all .5s}
+.hl-anatomy__points button.on::before{opacity:.85;transform:scale(1.25)}
+.hl-anatomy__points button.on::after{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(255,255,255,.7);animation:anat-pulse 2.4s ease-out infinite}
+@keyframes anat-pulse{0%{transform:scale(.5);opacity:.9}100%{transform:scale(1.5);opacity:0}}
+
 /* 4. 가이드 + 증언 (플레인 + 카드) */
 .hl-guide{max-width:760px;margin:24px auto 0}
 .hl-guide__empathy{font-family:var(--fd);font-weight:500;font-size:22px;line-height:1.5;color:var(--ink);letter-spacing:-0.01em}
 .hl-guide__auth{font-size:16px;color:var(--ink2);margin-top:16px}
-.hl-testi{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:38px}
-.hl-tcard{background:var(--card);border-radius:22px;padding:26px;text-align:left}
+/* 후기 캐러셀 — 카드 크기 고정, 무한 반복(기존 .hl-marquee 인프라 재사용) */
+.hl-marquee--testi{margin:38px calc(50% - 50vw) 0}
+.hl-marquee--testi .hl-marquee__track{align-items:stretch}
+.hl-tcard{flex:0 0 auto;width:clamp(260px,80vw,340px);background:var(--card);border-radius:22px;padding:26px;text-align:left}
 .hl-tcard p{font-size:14.5px;color:var(--ink);margin:0 0 16px;line-height:1.55}
 .hl-tcard .who{display:flex;align-items:center;gap:10px}
 .hl-tcard .av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#CFE9FF,#DDF0FF)}
 .hl-tcard .nm{font-family:var(--fd);font-weight:500;font-size:13px}
-.hl-trust{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:28px}
 
 /* 5. 계획 3단계 (카드, 마지막=블루 포인트) */
 .hl-steps{display:flex;gap:14px;justify-content:center;align-items:stretch;flex-wrap:wrap;margin-top:34px}
@@ -174,11 +307,18 @@ img{max-width:100%}
 
 /* 내비 */
 /* navbar — 블록보다 좁게 떠 있음. 스크롤 인식(히어로 위=투명·흰 / 스크롤 후=밝은 글래스·다크) */
-.hl-nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:40;width:calc(100% - 84px);max-width:1040px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 14px 10px 20px;border-radius:999px;background:transparent;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .3s ease,backdrop-filter .3s ease}
+:root{--sat:env(safe-area-inset-top,0px)}
+.hl-nav{position:fixed;top:max(calc(var(--sat) + 3px),14px);left:50%;transform:translateX(-50%);z-index:40;width:calc(100% - 84px);max-width:1040px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 14px 10px 20px;border-radius:999px;background:transparent;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .3s ease,backdrop-filter .3s ease,color .3s ease,transform .55s cubic-bezier(.45,0,.25,1)}
+/* 스크롤 방향 따라 숨김/등장 */
+.hl-nav.nav-hidden{transform:translate(-50%,calc(-100% - max(calc(var(--sat) + 3px),14px) - 10px))}
+.nav-hotzone{position:fixed;top:0;left:0;right:0;height:calc(var(--sat) + 76px);z-index:9998;pointer-events:none}
+.nav-hotzone.armed{pointer-events:auto}
+/* 모바일 하단 플로팅 CTA바 — navbar와 동일한 등장/숨김 규칙(스크롤 올리면 등장) */
+.mfcta{display:none}
 .hl-nav__logo{display:flex;align-items:center}
 .hl-nav__logo img{height:26px;width:auto;max-width:140px;display:block;transition:filter .3s ease}
 .hl-nav__menu{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:26px}
-.hl-nav__menu a,.hl-nav__act a{font-family:var(--fd);font-weight:500;font-size:14px;text-decoration:none}
+.hl-nav__menu a,.hl-nav__act a{font-family:var(--fd);font-weight:500;font-size:14px;text-decoration:none;transition:color .3s ease}
 .hl-nav__act{display:flex;align-items:center;gap:14px}
 /* 기본(히어로 위): 흰색 */
 .hl-nav__menu a,.hl-nav__act a{color:#fff}
@@ -187,11 +327,61 @@ img{max-width:100%}
 .hl-nav.is-scrolled{background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5)}
 .hl-nav.is-scrolled .hl-nav__menu a,.hl-nav.is-scrolled .hl-nav__act a{color:var(--ink2)}
 .hl-nav.is-scrolled .hl-nav__logo img{filter:none}
-/* nav CTA — 히어로 위: 프로스트 글래스(흰 림·흰 글씨) / 스크롤 후: 파란 버튼 */
-.gbtn--navcta{-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.55);color:#fff}
-.gbtn--navcta:hover{background:rgba(255,255,255,.28)}
-.hl-nav.is-scrolled .gbtn--navcta{background:var(--blue);border:none;color:#fff;-webkit-backdrop-filter:none;backdrop-filter:none}
-.hl-nav.is-scrolled .gbtn--navcta:hover{background:#0A6FE0}
+/* ★ 모바일 내비 — haler-web MobileNavbar.tsx 포팅 (필 + 아래로 확장되는 글래스 패널) */
+.mnav-right,.mnav-panel{display:none}
+@media (max-width:768px){
+  .hl-nav{width:calc(100% - 48px);height:48px;padding:0 5px 0 20px;justify-content:space-between}
+  .hl-nav__menu,.hl-nav__act{display:none}
+  .mnav-right{display:flex;align-items:center;gap:8px}
+  .mnav-cta{height:38px;padding:0 18px;display:inline-flex;align-items:center;transition:background .3s ease,color .3s ease,border-color .3s ease}
+  .mnav-burger{width:38px;height:38px;flex:0 0 38px;display:flex;align-items:center;justify-content:center;border-radius:50%;padding:0;cursor:pointer;
+    color:#fff;border:none;
+    background:linear-gradient(132deg,rgba(20,140,250,.86) 0%,rgba(52,172,255,.80) 46%,rgba(126,214,255,.74) 100%);
+    -webkit-backdrop-filter:blur(7px) saturate(1.5);backdrop-filter:blur(7px) saturate(1.5);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.55),0 8px 22px rgba(0,140,255,.22);
+    transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease}
+  .mnav-burger:active{transform:scale(.94)}
+  .mnav-burger svg{transition:transform .5s cubic-bezier(.22,1,.36,1)}
+  .hl-nav.is-open .mnav-burger svg{transform:rotate(180deg)}
+  /* 패널 뒤 배경 블러 (원본 MobileNavbar backdrop: black/5 + blur 2px) */
+  .mnav-backdrop{position:fixed;inset:0;z-index:38;overflow:hidden;
+    -webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);
+    opacity:0;pointer-events:none;transition:opacity .3s ease}
+  .mnav-backdrop::before{content:"";position:absolute;inset:-25%;
+    background:
+      radial-gradient(45% 35% at 22% 18%,rgba(0,183,255,.45),transparent 60%),
+      radial-gradient(38% 30% at 74% 32%,rgba(255,255,255,.75),transparent 65%),
+      radial-gradient(43% 38% at 62% 78%,rgba(0,98,255,.38),transparent 62%),
+      radial-gradient(30% 25% at 36% 55%,rgba(160,220,255,.50),transparent 70%);
+    animation:dim-drift 13s ease-in-out infinite}
+  .mnav-backdrop.open{opacity:1;pointer-events:auto}
+  @keyframes dim-drift{
+    0%,100%{transform:translate(0,0) rotate(0deg) scale(1)}
+    25%{transform:translate(8%,5%) rotate(6deg) scale(1.15)}
+    50%{transform:translate(-5%,7%) rotate(-4deg) scale(.92)}
+    75%{transform:translate(-7%,-5%) rotate(5deg) scale(1.1)}
+  }
+  @media (prefers-reduced-motion:reduce){.mnav-backdrop::before{animation:none}}
+  /* 확장 패널 — 트라이얼 버튼과 동일한 파란 글래스(Liquid Film) 배경으로 통일 */
+  .mnav-panel{display:block;position:fixed;top:max(calc(var(--sat) + 59px),70px);left:24px;right:24px;z-index:39;border-radius:32px;overflow:hidden;
+    color:#fff;border:none;
+    background:linear-gradient(132deg,rgba(20,140,250,.86) 0%,rgba(52,172,255,.80) 46%,rgba(126,214,255,.74) 100%);
+    -webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.55),0 20px 50px rgba(0,140,255,.28);
+    max-height:0;opacity:0;pointer-events:none;
+    transition:max-height .5s cubic-bezier(.32,.72,0,1),opacity .5s}
+  .mnav-panel.open{max-height:520px;opacity:1;pointer-events:auto}
+  .mnav-panel .mnav-link{color:inherit}
+  .mnav-panel .mnav-foot{border-top-color:rgba(255,255,255,.14);color:inherit;opacity:.6}
+  /* 메뉴 열렸을 때(스크롤 전) navbar 자체도 패널과 같은 파란 글래스로 맞춤 */
+  .hl-nav.is-open:not(.is-scrolled){background:linear-gradient(132deg,rgba(20,140,250,.86) 0%,rgba(52,172,255,.80) 46%,rgba(126,214,255,.74) 100%);
+    -webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5)}
+  .mnav-panel__in{padding:24px 32px 32px;text-align:left}
+  .mnav-link{display:block;font-family:var(--fd);font-size:36px;font-weight:300;letter-spacing:-.05em;line-height:1.15;color:inherit;text-decoration:none;margin-bottom:24px;transition:opacity .2s}
+  .mnav-link:active{opacity:.6}
+  .mnav-foot{display:flex;gap:24px;padding-top:32px;border-top:1px solid rgba(255,255,255,.1);font-family:var(--fd);font-weight:500;font-size:14px;opacity:.6}
+}
+
 
 /* ============================================================
    ★ SPATIAL 깊이 레이어 (기존 구조 위에 마감만 얹음)
@@ -218,12 +408,176 @@ img{max-width:100%}
 @keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
 @keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(13px)}}
 
+/* 브릿지 시네마틱 씬 — sticky + 베일 영상 + 인-씬 S5 조립 */
+.bridge-scene{height:200vh;position:relative}
+.bridge-sticky{position:sticky;top:0;height:100vh;width:100vw;margin-left:calc(50% - 50vw);
+  display:flex;align-items:center;justify-content:center;overflow:hidden}
+.bridge-veil{position:absolute;inset:0;z-index:0;opacity:0;background:#fff;will-change:opacity,filter,transform}
+.bridge-veil video{width:100%;height:100%;object-fit:cover;display:block}
+/* 임팩트 문장 — 뷰포트 정중앙 오버레이 */
+.bridge-txt{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(900px,92vw);margin:0;padding:0;text-align:center;will-change:filter,opacity;z-index:2}
+.bridge-txt .bw{will-change:opacity}
+#fh{display:inline-block;will-change:transform;position:relative;z-index:3}
+/* 트리거 재생: fine hydration 이동은 부드러운 이징 */
+@media (min-width:769px){
+  #fh{transition:transform 1.9s cubic-bezier(.22,1,.36,1)}
+  .as-device{transition:opacity .1s linear} /* 상승·페이드는 JS 스크럽 */
+}
+/* 디바이스 미디어 — 섹션 배경(꽉 참), 밑에서 위로 상승 */
+.as-device{position:absolute;inset:0;z-index:1;opacity:0;pointer-events:none;overflow:hidden;transform:translateY(90px);transition:opacity 1.6s ease,transform 1.6s cubic-bezier(.22,1,.36,1)}
+#bscene.play .as-device{opacity:1;transform:none}
+.as-device img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+/* fine hydration과 함께 움직이는 Designed for — JS가 위치·transform 동기화 */
+.as-designed{position:absolute;left:0;top:0;z-index:3;opacity:0;font-family:var(--fd);font-weight:500;
+  font-size:40px;line-height:1;letter-spacing:-0.03em;color:var(--ink);white-space:nowrap;pointer-events:none;will-change:transform,opacity}
+/* 조립되는 S5 — 제목(fine hydration): .hl-page와 동일한 박스(1200px 컨테이너 + 28px 패딩) 안쪽 왼쪽 가장자리 */
+.bassembly{position:absolute;left:max(28px,calc(50% - 572px));top:50%;z-index:2;
+  transform:translateY(calc(-50% + var(--asmY,0px)))}
+.bassembly .fh-slot{visibility:hidden} /* #fh 오버레이용 스페이서 */
+@media (min-width:769px){
+  .bassembly .as-title{margin:0;line-height:1.4;text-align:left}
+  .bassembly .fh-slot{display:block}
+  /* 2) 기능 3종 — 같은 박스 안쪽 오른쪽 가장자리. 활성=대제목 선상, 나머지=투명도 30%. 클릭/드래그로 전환 */
+  /* 셀렉터: 활성 항목이 대제목 선상(박스 중앙)으로 이동, 나머지는 위아래 흐림. 박스=대제목 선상 중앙정렬 */
+  /* 등장: 오른쪽에서 왼쪽으로 블러+슬라이드 인 (대제목 좌측 이동과 어울림) */
+  .as-feats{position:absolute;right:max(28px,calc(50% - 572px));top:50%;
+    transform:translateY(calc(-50% + var(--asmY,0px) - 45px)) translateX(80px);filter:blur(14px);
+    width:max-content;max-width:min(300px,32vw);height:96px;z-index:2;overflow:visible;
+    opacity:0;transition:opacity 1.9s cubic-bezier(.22,1,.36,1),transform 1.9s cubic-bezier(.22,1,.36,1),filter 1.9s cubic-bezier(.22,1,.36,1);text-align:left;touch-action:pan-y}
+  #bscene.play .as-feats{opacity:1;transform:translateY(calc(-50% + var(--asmY,0px) - 45px));filter:blur(0)}
+  .as-feats__track{position:relative;display:flex;flex-direction:column;gap:34px;transition:transform .6s cubic-bezier(.22,1,.36,1)}
+  .as-feat{opacity:.3;transition:opacity .5s ease;cursor:pointer;background:none;border:none;padding:0;margin:0;text-align:left;font:inherit;display:block}
+  .as-feat.active{opacity:1}
+  .as-feat h4{font-family:var(--fd);font-weight:500;font-size:20px;margin:0 0 5px;color:var(--ink);white-space:nowrap;
+    transition:color .4s ease}
+  /* 활성 항목 제목에 대제목과 동일한 블루 그라데이션 */
+  .as-feat.active h4{background:linear-gradient(118deg,#00B7FF,#0062FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .as-feat p{font-size:15px;color:var(--ink2);margin:0;line-height:1.4}
+}
+@media (max-width:768px){
+  /* 모바일: 시네마틱 비활성 — 평범한 블록 2개로 렌더 */
+  .bridge-scene{height:auto}
+  .bridge-sticky{position:static;height:auto;display:block;overflow:visible;padding:64px 0}
+  .bridge-veil{display:none}
+  .bstage{width:auto;margin:0 auto;max-width:1200px;padding:0 28px}
+  .bridge-txt{position:static;transform:none;max-width:none;text-align:center;margin:0 auto}
+  .bridge-txt .bw{color:var(--ink)} /* 모바일은 즉시 완성 */
+  #fh{transform:none!important}
+  .as-device{position:static;transform:none!important;opacity:1!important;margin:32px auto 0;width:auto;height:auto}
+  .as-device img{height:auto;object-fit:contain}
+  .as-designed{position:static;display:block;opacity:1!important;transform:none!important;text-align:center;font-size:30px;margin-bottom:2px}
+  .bassembly{position:static;transform:none;width:auto;margin:24px auto 0;max-width:560px;padding:0 28px;text-align:center}
+  .as-feats{position:static;transform:none!important;width:auto;height:auto;opacity:1!important;max-width:560px;margin:32px auto 0;padding:0 28px}
+  .as-feats__track{transform:none!important;gap:0}
+  .as-feat{opacity:1!important;padding:16px 0;border-top:1px solid var(--line);width:100%}
+  .as-feat:first-child{border-top:none}
+  .as-feat h4{font-family:var(--fd);font-weight:500;font-size:17px;margin:0 0 4px;white-space:normal}
+  .as-feat p{font-size:14px;color:var(--ink2);margin:0}
+  .as-feat br{display:none}
+}
+
+/* 브릿지 텍스트 — 스크롤 단어 점등 + fine hydration 미스트 클리어 */
+/* .ac(예: #fh)는 자기 자신의 그라데이션 배경도 갖고 있는데, 자식 단어들이 .bw-grad로 쪼개지면서
+   각자 또 같은 그라데이션을 독립적으로 그림 → 점등 전(opacity:.25) 부모 그라데이션이 다른 각도/크기로 비쳐보여 글자가 겹쳐 보이는 버그.
+   부모의 배경을 없애서 자식 .bw-grad 하나만 렌더링되게 함 */
+.bridge-txt .ac{background:none}
+.bridge-txt .bw{color:#C7D3E2;transition:color .35s ease}
+.bridge-txt .bw.lit{color:var(--ink)}
+.bridge-txt .bw-grad{display:inline-block;background:linear-gradient(118deg,#00B7FF,#0062FF);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:blur(8px);opacity:.25;transition:filter .6s ease,opacity .6s ease}
+.bridge-txt .bw-grad.lit{filter:blur(0);opacity:1;color:transparent}
+@media (prefers-reduced-motion:reduce){.bridge-txt .bw{color:var(--ink)}.bridge-txt .bw-grad{filter:none;opacity:1}}
+
 /* 스크롤 진입 페이드업 (JS가 .sp-reveal 부여 → 보일 때 .sp-in) */
 .sp-reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
 .sp-in{opacity:1;transform:none}
 
+/* ★ 페이지 배경 확산 블러 오브 (은은한 하늘색, 느린 드리프트) */
+.bg-orbs{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.hl-page{position:relative;z-index:1}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);will-change:transform;opacity:.55}
+.orb--a{width:560px;height:560px;left:-8%;top:6%;background:radial-gradient(circle,rgba(0,150,255,.14),transparent 70%);animation:orbA 26s ease-in-out infinite}
+.orb--b{width:480px;height:480px;right:-6%;top:32%;background:radial-gradient(circle,rgba(0,183,255,.12),transparent 70%);animation:orbB 32s ease-in-out infinite}
+.orb--c{width:520px;height:520px;left:24%;bottom:-14%;background:radial-gradient(circle,rgba(120,200,255,.13),transparent 70%);animation:orbC 29s ease-in-out infinite}
+.orb--d{width:380px;height:380px;right:26%;top:-8%;background:radial-gradient(circle,rgba(170,220,255,.12),transparent 70%);animation:orbA 36s ease-in-out infinite reverse}
+@keyframes orbA{0%,100%{transform:translate(0,0)}33%{transform:translate(70px,50px)}66%{transform:translate(-40px,90px)}}
+@keyframes orbB{0%,100%{transform:translate(0,0)}33%{transform:translate(-80px,60px)}66%{transform:translate(50px,-50px)}}
+@keyframes orbC{0%,100%{transform:translate(0,0)}50%{transform:translate(90px,-70px)}}
+
 @media (max-width:600px){.hero-deco{display:none}}
+
+/* ★ 모바일 레이아웃 — 그리드 1열 스택 + 가로 스크롤 차단 */
+@media (max-width:768px){
+  html,body{overflow-x:hidden}
+  /* 6 micrometer magic — 모바일은 브릿지 씬처럼 스크롤 고정 없이 일반 스크롤(성능·조작감 이유로 시네마틱 비활성).
+     100vh면 영상이 너무 세로로 늘어나(cover) 옆이 심하게 잘려서 높이도 줄임 */
+  .hl-sec-magic-scene{height:auto;overflow:hidden} /* 상승하는 xem 텍스트·궤도가 섹션 밖으로 새지 않게 */
+  .hl-sec-magic-sticky{position:static;height:520px;width:100vw;margin-left:calc(50% - 50vw)}
+  .hl-sec-magic__orbitwrap{--orbit-r:400px}
+  .hl-sec-magic__label{font-size:26px}
+  .hl-sec-magic__in--b{padding-bottom:14px}
+  .hl-sec-magic__orb{width:140px;height:140px;margin:-70px}
+  /* 타이포 스케일 축소 */
+  .hl-h1{font-size:36px}
+  .hero-v__box .hl-h1{font-size:clamp(32px,9vw,40px)}
+  .hero-v{align-items:center}
+  .hero-h1-desktop{display:none}
+  .hero-v__box .hero-h1-mobile{display:block;opacity:1;font-size:clamp(29px,8.2vw,36px)}
+  .hero-v__sub{display:none}
+  .hero-v__cta{display:none}
+  /* 다이나믹 아일랜드 하단 ~ 화면 하단 구간을 '전체 화면'으로 간주해 그 안에서 중앙정렬 */
+  .hero-v__in{position:absolute;left:0;right:0;top:env(safe-area-inset-top,0px);bottom:0;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 clamp(24px,4vw,52px)}
+  /* 배경 비디오를 옅게 톤다운 — 텍스트 가독성 확보(과하지 않게) */
+  .hero-v::after{background:linear-gradient(180deg,rgba(8,18,38,.30),rgba(8,18,38,.16) 24%,rgba(8,18,38,.16) 68%,rgba(8,18,38,.55))}
+  .mfcta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:41;
+    padding:16px 20px calc(16px + env(safe-area-inset-bottom,0px));
+    transition:transform .55s cubic-bezier(.45,0,.25,1)}
+  .mfcta.mfcta-hidden{transform:translateY(calc(100% + 16px + env(safe-area-inset-bottom,0px)))}
+  .mfcta__btn{display:block;width:100%;text-align:center}
+  .hl-h2{font-size:27px}
+  .hl-sub{font-size:15.5px;max-width:480px}
+  .hl-kicker{font-size:11px}
+  .hl-guide__empathy{font-size:18px}
+  .hl-guide__auth{font-size:14.5px}
+  .hl-explain{font-size:15px}
+  .hl-vcard h4,.hl-step h4{font-size:16.5px}
+  .hl-vcard p,.hl-step p,.hl-mb p{font-size:13.5px}
+  .hl-mb h4{font-size:18px}
+  .hl-bigcard h4{font-size:19px}
+  .hl-bigcard .lead{font-size:14.5px}
+  .hl-pcard .price{font-size:30px}
+  .hl-tcard p{font-size:13.5px}
+  .hl-footer__one{font-size:18px}
+  .hl-value3,.hl-twoup,.hl-pricing{grid-template-columns:1fr}
+  .hl-bento{grid-template-columns:1fr;grid-auto-rows:auto}
+  .hl-bento .hl-mb{grid-column:auto;grid-row:auto}
+  .hl-block--airy{padding:56px 24px}
+  .hl-block--lead{padding:48px 24px}
+  .hl-block--point{padding:48px 24px}
+  .hl-sec{padding:64px 8px}
+  .hl-sec--hook{padding:120px 16px 10px}
+  .hl-sec--carousel{padding-top:6px}
+  /* 모바일 전용 — 실사 이미지 카드 2줄 무한 슬라이드(정사각형, 그림자 없음, 줄마다 방향 다르게) */
+  .hl-marquee{margin-top:0;display:flex;flex-direction:column;gap:14px}
+  .hl-marquee__track{gap:14px}
+  .hl-marquee__track--b{display:flex;animation-duration:34s;animation-direction:reverse}
+  .hl-mcard{width:clamp(150px,39vw,225px);aspect-ratio:1/1;border-radius:20px;box-shadow:none}
+  .hl-mcard__label{font-size:15px;left:12px;right:12px;bottom:10px}
+  .hl-anatomy-sec{padding:24px 0 64px}
+  /* 모바일 — 소제목과 카드 사이 간격(데스크탑용 174px)이 너무 넓어서 좁힘 */
+  .hl-anatomy__cardwrap{margin-top:32px}
+  /* 모바일 — 파트명(Nasal Cavity 등)은 대제목 크기로 줄여 한 줄에, 설명은 소제목 크기로, 점 인디케이터는 대제목 위로 */
+  .hl-anatomy__row{flex-direction:column-reverse;align-items:flex-start;justify-content:flex-start;gap:10px}
+  .hl-anatomy__spot{font-size:27px;white-space:nowrap}
+  .hl-anatomy__desc{font-size:15.5px}
+  .hl-arrow{transform:rotate(90deg);justify-content:center;width:100%}
+  .hl-cmp{display:block;overflow-x:auto}
+}
 @media (prefers-reduced-motion:reduce){
   .sp-reveal{opacity:1;transform:none;transition:none}
-  .hero-orb,.hero-pearl{animation:none}
+  .hero-orb,.hero-pearl,.orb{animation:none}
 }
+
+/* fine hydration 정의 섹션: 소제목 3줄 유지 위해 폭 확대(데스크탑만) */
+@media (min-width:769px){ .hl-sec--define .hl-sub{max-width:600px} }
