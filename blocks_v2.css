@@ -307,7 +307,7 @@ img{max-width:100%}
 
 /* 내비 */
 /* navbar — 블록보다 좁게 떠 있음. 스크롤 인식(히어로 위=투명·흰 / 스크롤 후=밝은 글래스·다크) */
-:root{--sat:env(safe-area-inset-top,0px)}
+:root{--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px)}
 .hl-nav{position:fixed;top:max(calc(var(--sat) + 3px),14px);left:50%;transform:translateX(-50%);z-index:40;width:calc(100% - 84px);max-width:1040px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 14px 10px 20px;border-radius:999px;background:transparent;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .3s ease,backdrop-filter .3s ease,color .3s ease,transform .55s cubic-bezier(.45,0,.25,1)}
 /* 스크롤 방향 따라 숨김/등장 */
 .hl-nav.nav-hidden{transform:translate(-50%,calc(-100% - max(calc(var(--sat) + 3px),14px) - 10px))}
@@ -525,7 +525,7 @@ img{max-width:100%}
   .hl-sec-magic__ring{border-width:1px}
   .hl-sec-magic__label{font-size:22px}
   /* 하단 고정 트라이얼 바(mfcta)와 겹치지 않도록 그 높이만큼 띄움 */
-  .hl-sec-magic__in--b{padding-bottom:calc(104px + env(safe-area-inset-bottom,0px))}
+  .hl-sec-magic__in--b{padding-bottom:calc(104px + var(--sab))}
   /* 타이포 스케일 축소 */
   .hl-h1{font-size:36px}
   .hero-v__box .hl-h1{font-size:clamp(32px,9vw,40px)}
@@ -535,14 +535,14 @@ img{max-width:100%}
   .hero-v__sub{display:none}
   .hero-v__cta{display:none}
   /* 다이나믹 아일랜드 하단 ~ 화면 하단 구간을 '전체 화면'으로 간주해 그 안에서 중앙정렬 */
-  .hero-v__in{position:absolute;left:0;right:0;top:env(safe-area-inset-top,0px);bottom:0;
+  .hero-v__in{position:absolute;left:0;right:0;top:var(--sat);bottom:0;
     display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 clamp(24px,4vw,52px)}
   /* 배경 비디오를 옅게 톤다운 — 텍스트 가독성 확보(과하지 않게) */
   .hero-v::after{background:linear-gradient(180deg,rgba(8,18,38,.30),rgba(8,18,38,.16) 24%,rgba(8,18,38,.16) 68%,rgba(8,18,38,.55))}
   .mfcta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:41;
-    padding:16px 20px calc(16px + env(safe-area-inset-bottom,0px));
+    padding:16px 20px calc(16px + var(--sab));
     transition:transform .55s cubic-bezier(.45,0,.25,1)}
-  .mfcta.mfcta-hidden{transform:translateY(calc(100% + 16px + env(safe-area-inset-bottom,0px)))}
+  .mfcta.mfcta-hidden{transform:translateY(calc(100% + 16px + var(--sab)))}
   .mfcta__btn{display:block;width:100%;text-align:center}
   .hl-h2{font-size:27px}
   .hl-sub{font-size:15.5px;max-width:480px}
