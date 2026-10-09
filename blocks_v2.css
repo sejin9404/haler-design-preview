@@ -78,12 +78,7 @@ img{max-width:100%}
 .hl-sec{padding:96px 16px}
 .hl-sec--tight{padding:72px 16px}
 .hl-sec--hook{padding:220px 16px}
-/* 캐러셀 섹션 — 검정~곤색~파랑 확산 그라데이션, 처음부터 자연스럽게 밝은 배경으로 복귀 */
-.hl-sec--carousel{position:relative;isolation:isolate}
-.hl-sec--carousel::before{content:"";position:absolute;top:0;bottom:0;left:calc(50% - 50vw);width:100vw;z-index:-1;pointer-events:none;
-  background:linear-gradient(160deg,#04060C 0%,#0A1330 40%,#0E1F45 70%,#0E1F45 100%);
-  -webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 100%);
-  mask-image:linear-gradient(180deg,#000 0%,transparent 100%)}
+/* 캐러셀 섹션 — 페이지 기본 배경 그대로(다크 그라데이션 제거) */
 
 /* 의미있는 블록 컨테이너 (테두리 0) */
 .hl-block{position:relative;border-radius:36px;margin:20px 0;overflow:hidden;border:none}
@@ -155,9 +150,22 @@ img{max-width:100%}
 .hl-stake p{font-family:var(--fd);font-weight:500;font-size:15px;color:var(--ink);margin:0}
 
 /* 2b. 무한 슬라이드 캐러셀(실사 이미지+캡션) — 데스크탑: 기존 1줄(3:4, 그림자) 그대로. 모바일 전용 2줄·정사각형·그림자없음은 반응형 블록에서 오버라이드 */
-.hl-marquee{width:100vw;margin:34px calc(50% - 50vw) 14px;overflow:hidden;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.hl-marquee{position:relative;width:100vw;margin:34px calc(50% - 50vw) 14px;overflow:hidden}
+/* 양옆 마감 — 흰색 페이드(마스크) 대신 점진 블러.
+   backdrop-filter 한 겹 + 마스크는 경계가 뚝 끊겨 보여서, 블러 강도가 다른 3겹을 겹쳐 자연스러운 그라데이션을 만든다. */
+.hl-marquee__edge{position:absolute;top:0;bottom:0;width:16%;z-index:3;pointer-events:none}
+.hl-marquee__edge--l{left:0}
+.hl-marquee__edge--r{right:0;transform:scaleX(-1)}
+.hl-marquee__edge i{position:absolute;inset:0;display:block}
+.hl-marquee__edge i:nth-child(1){-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+  -webkit-mask-image:linear-gradient(90deg,#000 0%,#000 58%,transparent 100%);
+  mask-image:linear-gradient(90deg,#000 0%,#000 58%,transparent 100%)}
+.hl-marquee__edge i:nth-child(2){-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);
+  -webkit-mask-image:linear-gradient(90deg,#000 0%,#000 26%,transparent 72%);
+  mask-image:linear-gradient(90deg,#000 0%,#000 26%,transparent 72%)}
+.hl-marquee__edge i:nth-child(3){-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);
+  -webkit-mask-image:linear-gradient(90deg,#000 0%,transparent 46%);
+  mask-image:linear-gradient(90deg,#000 0%,transparent 46%)}
 .hl-marquee__track{display:flex;align-items:flex-start;gap:18px;width:max-content;animation:marquee 38s linear infinite}
 .hl-marquee__track--b{display:none}
 .hl-marquee:hover .hl-marquee__track{animation-play-state:paused}
@@ -315,23 +323,44 @@ img{max-width:100%}
 .nav-hotzone.armed{pointer-events:auto}
 /* 모바일 하단 플로팅 CTA바 — navbar와 동일한 등장/숨김 규칙(스크롤 올리면 등장) */
 .mfcta{display:none}
-.hl-nav__logo{display:flex;align-items:center}
-.hl-nav__logo img{height:26px;width:auto;max-width:140px;display:block;transition:filter .3s ease}
-.hl-nav__menu{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:26px}
+/* 데스크탑 nav 구성 — 왼쪽 메뉴 / 가운데 워드마크 로고 / 오른쪽 마이페이지·장바구니·트라이얼 */
+.hl-nav__logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;cursor:pointer}
+.hl-nav__logo img{height:19px;width:auto;max-width:120px;display:block;transition:filter .3s ease}
+.hl-nav__logo .hl-nav__logo--mob{display:none}
+/* 로고 호버 — 워드마크가 위로 빠지고 심볼이 아래에서 올라옴(슬라이드 인-아웃) */
+.hl-nav__logoswap{position:relative;display:block;width:60px;height:28px;overflow:hidden}
+.hl-nav__logoswap img{position:absolute;left:50%;top:50%;
+  transition:transform .48s cubic-bezier(.22,1,.36,1),opacity .3s ease,filter .3s ease}
+.hl-nav__logoswap .hl-nav__logo--desk{height:19px;transform:translate(-50%,-50%)}
+.hl-nav__logoswap .hl-nav__logo--sym{height:24px;transform:translate(-50%,90%);opacity:0}
+.hl-nav__logo:hover .hl-nav__logoswap .hl-nav__logo--desk{transform:translate(-50%,-190%);opacity:0}
+.hl-nav__logo:hover .hl-nav__logoswap .hl-nav__logo--sym{transform:translate(-50%,-50%);opacity:1}
+@media (prefers-reduced-motion:reduce){.hl-nav__logoswap img{transition:opacity .2s ease}}
+.hl-nav__menu{display:flex;align-items:center;gap:26px}
 .hl-nav__menu a,.hl-nav__act a{font-family:var(--fd);font-weight:500;font-size:14px;text-decoration:none;transition:color .3s ease}
-.hl-nav__act{display:flex;align-items:center;gap:14px}
+.hl-nav__menu a,.hl-nav__ic{cursor:pointer}
+.hl-nav__act{display:flex;align-items:center;gap:12px}
+.hl-nav__ic{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;
+  transition:background .25s ease,color .3s ease}
+.hl-nav__ic svg{display:block}
+.hl-nav__ic:hover{background:rgba(255,255,255,.16)}
+.hl-nav.is-scrolled .hl-nav__ic:hover{background:rgba(0,132,255,.09)}
 /* 기본(히어로 위): 흰색 */
-.hl-nav__menu a,.hl-nav__act a{color:#fff}
+.hl-nav__menu a,.hl-nav__act a,.hl-nav__ic{color:#fff}
 .hl-nav__logo img{filter:brightness(0) invert(1)}
 /* 스크롤 후: 밝은 글래스 + 다크 + 원색 로고 */
 .hl-nav.is-scrolled{background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5)}
-.hl-nav.is-scrolled .hl-nav__menu a,.hl-nav.is-scrolled .hl-nav__act a{color:var(--ink2)}
+.hl-nav.is-scrolled .hl-nav__menu a,.hl-nav.is-scrolled .hl-nav__act a,.hl-nav.is-scrolled .hl-nav__ic{color:var(--ink2)}
 .hl-nav.is-scrolled .hl-nav__logo img{filter:none}
 /* ★ 모바일 내비 — haler-web MobileNavbar.tsx 포팅 (필 + 아래로 확장되는 글래스 패널) */
 .mnav-right,.mnav-panel{display:none}
 @media (max-width:768px){
   .hl-nav{width:calc(100% - 48px);height:48px;padding:0 5px 0 20px;justify-content:space-between}
   .hl-nav__menu,.hl-nav__act{display:none}
+  /* 모바일 nav는 기존 구성 유지 — 로고 왼쪽 고정 + 심볼 포함 */
+  .hl-nav__logo{position:static;transform:none}
+  .hl-nav__logoswap{display:none}
+  .hl-nav__logo .hl-nav__logo--mob{display:block;height:26px;max-width:140px}
   .mnav-right{display:flex;align-items:center;gap:8px}
   .mnav-cta{height:38px;padding:0 18px;display:inline-flex;align-items:center;transition:background .3s ease,color .3s ease,border-color .3s ease}
   .mnav-burger{width:38px;height:38px;flex:0 0 38px;display:flex;align-items:center;justify-content:center;border-radius:50%;padding:0;cursor:pointer;
@@ -590,3 +619,76 @@ img{max-width:100%}
 
 /* fine hydration 정의 섹션: 소제목 3줄 유지 위해 폭 확대(데스크탑만) */
 @media (min-width:769px){ .hl-sec--define .hl-sub{max-width:600px} }
+
+/* ============================================================
+   ★ 모바일 하단 탭바 (5탭) + 펼쳐지는 세부 메뉴 패널
+   - 상단 hl-nav는 코드를 남겨두고 모바일에서만 숨김(추후 재적용 가능)
+   - 로그인 여부는 body.is-authed 로 전환 (기본=비로그인)
+   ============================================================ */
+.mtab,.mtab-panel,.mtab-backdrop{display:none}
+body:not(.is-authed) .mtab-authed{display:none}
+body.is-authed .mtab-guest{display:none}
+
+@media (max-width:768px){
+  /* 상단 네비·기존 CTA 바는 하단 탭바로 대체 (코드는 유지) */
+  .hl-nav,.mfcta,.nav-hotzone{display:none}
+
+  /* 아이콘 전용 pill 바 — 테두리 없음, 프로스트 약하게, 좌우·하단 여백 동일(8px) */
+  .mtab{--mtab-inset:calc(5vw + 7px);
+    display:flex;position:fixed;left:var(--mtab-inset);right:var(--mtab-inset);bottom:var(--mtab-inset);z-index:44;
+    align-items:stretch;justify-content:space-between;gap:2px;padding:6px;border-radius:999px;
+    background:rgba(255,255,255,.46);
+    -webkit-backdrop-filter:blur(12px) saturate(1.3);backdrop-filter:blur(12px) saturate(1.3);
+    box-shadow:0 10px 30px rgba(10,40,90,.14)}
+  .mtab__item{position:relative;flex:1 1 0;min-width:0;height:48px;
+    display:flex;align-items:center;justify-content:center;
+    border:none;background:none;padding:0;cursor:pointer;color:var(--ink2);
+    transition:color .25s ease}
+  .mtab__item span{display:none}          /* 라벨 없이 아이콘만 */
+  .mtab__item svg{display:block;position:relative;z-index:1}
+  /* 선택 표시 — 공용 원형 인디케이터가 선택한 탭으로 슬라이드(테두리 없음).
+     기본 위치는 CTA 탭, 탭을 고르면 그쪽으로 이동 */
+  .mtab__ind{position:absolute;top:50%;left:0;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;
+    background:linear-gradient(132deg,rgba(20,140,250,.86) 0%,rgba(52,172,255,.80) 46%,rgba(126,214,255,.74) 100%);
+    -webkit-backdrop-filter:blur(7px) saturate(1.5);backdrop-filter:blur(7px) saturate(1.5);
+    box-shadow:0 8px 24px rgba(0,140,255,.24);
+    transform:translateX(0);pointer-events:none;
+    transition:transform .62s cubic-bezier(.32,.72,0,1)}
+  .mtab__item.is-on{color:#fff}
+
+  /* 세부 메뉴 패널 — 탭바 위로 펼쳐짐 */
+  .mtab-panel{--mtab-inset:calc(5vw + 7px);
+    display:block;position:fixed;left:var(--mtab-inset);right:var(--mtab-inset);bottom:calc(var(--mtab-inset) + 68px);z-index:43;
+    border-radius:28px;overflow:hidden;color:#fff;
+    background:linear-gradient(155deg,rgba(10,95,224,.94) 0%,rgba(30,150,250,.92) 45%,rgba(120,205,255,.90) 100%);
+    -webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.5),0 18px 50px rgba(0,80,180,.3);
+    max-height:0;opacity:0;pointer-events:none;
+    transition:max-height .55s cubic-bezier(.32,.72,0,1),opacity .45s ease}
+  .mtab-panel.open{max-height:min(62vh,520px);opacity:1;pointer-events:auto}
+  /* 열린 채 다른 탭으로 바꿀 때 내용만 크로스페이드 */
+  .mtab-panel__in{transition:opacity .18s ease}
+  .mtab-panel__in.is-swapping{opacity:0}
+  .mtab-panel__in{padding:22px 24px 24px;text-align:left;max-height:min(62vh,520px);overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .mtab-pane{display:none}
+  .mtab-pane.is-on{display:block}
+  .mtab-pane__t{font-family:var(--fd);font-weight:500;font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+    opacity:.72;margin:0 0 14px}
+  .mtab-pane__d{font-size:14.5px;line-height:1.5;opacity:.9;margin:0 0 18px}
+  .mtab-link{display:block;font-family:var(--fd);font-weight:500;font-size:24px;letter-spacing:-.03em;
+    line-height:1.15;color:#fff;text-decoration:none;padding:9px 0;transition:opacity .2s}
+  .mtab-link:active{opacity:.6}
+  .mtab-cta{width:100%;justify-content:center;color:var(--deep);text-shadow:none;
+    background:linear-gradient(132deg,rgba(255,255,255,.96),rgba(232,245,255,.92));
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.9),0 10px 26px rgba(0,60,150,.22)}
+  .mtab-signin{font-size:13.5px;opacity:.85;margin:14px 0 0;text-align:center}
+  .mtab-signin a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+
+  .mtab-backdrop{display:block;position:fixed;inset:0;z-index:42;
+    -webkit-backdrop-filter:blur(16px) saturate(1.2);backdrop-filter:blur(16px) saturate(1.2);
+    background:rgba(255,255,255,.34);opacity:0;pointer-events:none;transition:opacity .35s ease}
+  .mtab-backdrop.open{opacity:1;pointer-events:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  .mtab-panel{transition:opacity .2s ease}
+}
